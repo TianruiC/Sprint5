@@ -3,6 +3,8 @@ package businessPlan;
 public class CNTRAssessment extends BusinessPlan
 {
 
+	private static final long serialVersionUID = -235542752097413334L;
+
 	// create an empty tree for CNTR Assessment
 	public CNTRAssessment()
 	{

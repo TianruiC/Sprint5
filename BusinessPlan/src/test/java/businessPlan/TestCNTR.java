@@ -1,4 +1,4 @@
-package businessPlan;
+package BusinessPlan;
 
 import static org.junit.jupiter.api.Assertions.*;
 

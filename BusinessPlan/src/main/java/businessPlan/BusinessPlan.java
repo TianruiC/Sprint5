@@ -7,11 +7,26 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class BusinessPlan
+public abstract class BusinessPlan implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8935223403182446534L;
 	public Section root;
+	public String department;
+	public int year;
+	public boolean isEditable;
+	
+
+	@Override
+	public String toString() {
+		return "BusinessPlan [root=" + root + ", department=" + department + ", year=" + year + ", isEditable="
+				+ isEditable + "]";
+	}
 
 	public abstract void addSection(Section parent);// the only abstract method
 	//if needed in the future, we may change the abstract method and let it throw Exceptions, but for now

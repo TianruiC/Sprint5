@@ -1,7 +1,11 @@
 package businessPlan;
 
-public class VMOSA extends BusinessPlan
+import java.io.Serializable;
+
+public class VMOSA extends BusinessPlan implements Serializable
 {
+
+	private static final long serialVersionUID = 3349885006404797374L;
 
 	public VMOSA()
 	{

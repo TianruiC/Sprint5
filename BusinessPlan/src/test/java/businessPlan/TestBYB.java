@@ -1,4 +1,4 @@
-package businessPlan;
+package BusinessPlan;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,17 +13,17 @@ class TestBYB
 		// check the structure of tree
 		BusinessPlan BP = new BYBPlan();
 		assertEquals("BYB Mission Statement", BP.root.getName());
-		Section testCur = BP.root;
-		assertEquals("BYB Plan", testCur.children.get(0).name);
-		testCur = testCur.children.get(0);
+		Section testCur = BP.root;//"BYB Mission Statement"
 		assertEquals("BYB Objectives", testCur.children.get(0).name);
-		testCur = testCur.children.get(0);
+		testCur = testCur.children.get(0);//"BYB Objectives"
+		assertEquals("BYB Plan", testCur.children.get(0).name);
+		testCur = testCur.children.get(0);//"BYB Plan"
 
 		// check addSection()
 		BP.addSection(testCur);
 		assertEquals(0, testCur.children.size());
 		BP.addSection(new Section("wrong"));// will never happen,just for test
-		BP.addSection(BP.root);// now have two objectives
+		BP.addSection(BP.root);// now have two Objectives
 		assertEquals(2, BP.root.getChildren().size());
 
 		Section current = BP.root.children.get(0);// the old objective

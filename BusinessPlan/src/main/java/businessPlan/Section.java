@@ -1,9 +1,12 @@
 package businessPlan;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Section
+public class Section implements Serializable
 {
+
+	private static final long serialVersionUID = 3004879294918214266L;
 	String name;
 	String content = "";
 	Section parent = null;
