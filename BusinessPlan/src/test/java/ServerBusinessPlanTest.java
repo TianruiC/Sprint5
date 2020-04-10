@@ -86,7 +86,7 @@ class ServerBusinessPlanTest {
 			//when the BP is new, add
 			client.getCurrentBP().year=2021;
 			client.uploadBP();
-			//when the BP already existed and isEditable is true
+			//when the BP already existed and isEditable is true, replace with old version
 			client.getCurrentBP().year=2009;
 			client.uploadBP();
 			

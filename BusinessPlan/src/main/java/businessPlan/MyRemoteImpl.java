@@ -92,7 +92,7 @@ public class MyRemoteImpl implements MyRemote {
     	}
     	else {
     		for (int i=0; i<storedBP.size();i++){
-        		if((storedBP.get(i).department==loginPerson.department)&&(storedBP.get(i).year==year)){
+        		if((storedBP.get(i).department.equals(loginPerson.department))&&(storedBP.get(i).year==year)){
         			bpcur=storedBP.get(i);
         		}
     		}
@@ -119,7 +119,7 @@ public class MyRemoteImpl implements MyRemote {
     		return null;
     	}
     	for (int i=0; i<storedBP.size();i++){
-    		if((storedBP.get(i).department==loginPerson.department)&&(storedBP.get(i).year==year)){
+    		if((storedBP.get(i).department.equals(loginPerson.department))&&(storedBP.get(i).year==year)){
     			System.out.println("BusinessPlan found.");
     			return storedBP.get(i);
     		}
@@ -139,7 +139,7 @@ public class MyRemoteImpl implements MyRemote {
     	for (int i=0; i<storedBP.size();i++){
     		BusinessPlan current=storedBP.get(i);
 
-    		if((current.department==loginPerson.department)&&(current.year==BP.year)){
+    		if((current.department.equals(BP.department))&&(current.year==BP.year)){
     			System.out.println("Business Plan already exists.");
     			if(current.isEditable==false) {
     				Message="This BusinessPlan is not Editable";
