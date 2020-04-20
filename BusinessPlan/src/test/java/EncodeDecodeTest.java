@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import businessPlan.BusinessPlan;
 import businessPlan.MyRemote;
-import businessPlan.MyRemoteClient;
 import businessPlan.MyRemoteImpl;
 import businessPlan.Person;
 import businessPlan.VMOSA;
@@ -57,8 +56,8 @@ class EncodeDecodeTest {
     	
 		MyRemote stub = (MyRemote) UnicastRemoteObject.exportObject(server, 0);
 		registry.rebind("MyRemote", stub);
-		MyRemote serverInterface=(MyRemote) registry.lookup("MyRemote");
-		MyRemoteClient client=new MyRemoteClient(serverInterface);
+		//MyRemote serverInterface=(MyRemote) registry.lookup("MyRemote");
+		//WTF??MyRemoteClient client=new MyRemoteClient(serverInterface);
 		
 		//test automatically run, start here
 		

@@ -9,7 +9,6 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 
@@ -221,7 +220,8 @@ public class MyRemoteImpl implements MyRemote {
 	//When the server starts, we can call this two function first
 	//Since we set the filename of encoder's and decoder's files are the same, 
 	//The server will always store and read from the same files.
-	public ArrayList <BusinessPlan> XMLDecodeBP() {
+	@SuppressWarnings("unchecked")
+  public ArrayList <BusinessPlan> XMLDecodeBP() {
 		String BusinessPlan_File="Server_BusinessPlan.xml";
 		XMLDecoder decoder=null;
 		try {
@@ -232,7 +232,8 @@ public class MyRemoteImpl implements MyRemote {
 		return (ArrayList<BusinessPlan>)decoder.readObject();
 	}
 	
-	public ArrayList <Person> XMLDecodeUser() {
+	@SuppressWarnings("unchecked")
+  public ArrayList <Person> XMLDecodeUser() {
 		String User_File="Server_User.xml";
 		XMLDecoder decoder=null;
 		try {

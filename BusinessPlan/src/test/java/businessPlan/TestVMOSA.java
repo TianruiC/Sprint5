@@ -1,4 +1,4 @@
-package BusinessPlan;
+package businessPlan;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,10 +40,10 @@ class TestVMOSA
 		assertEquals(1, testNew.getChildren().size());
 		testNew.addChild(tChild);
 		assertEquals(2, testNew.getChildren().size());
-		//应该再更详细点 test child的name，content，而不是单单的getChildren().size()
+		//åº”è¯¥å†�æ›´è¯¦ç»†ç‚¹ test childçš„nameï¼Œcontentï¼Œè€Œä¸�æ˜¯å�•å�•çš„getChildren().size()
 		testNew.deleteChild(tChild);
 		assertEquals(1, testNew.getChildren().size());
-		//一样的问题 你也不是自己delete的是不是这个specific的tchild
+		//ä¸€æ ·çš„é—®é¢˜ ä½ ä¹Ÿä¸�æ˜¯è‡ªå·±deleteçš„æ˜¯ä¸�æ˜¯è¿™ä¸ªspecificçš„tchild
 		
 		// check setChildren() and getChildren()
 		ArrayList<Section> children = new ArrayList<Section>();
@@ -107,7 +107,7 @@ class TestVMOSA
 		BP.root.setContent("Hello");
 		Section current = BP.root.children.get(0);
 		current.setContent("World");
-		BP.addSection(current);// current is mission//看不太懂
+		BP.addSection(current);// current is mission//çœ‹ä¸�å¤ªæ‡‚
 		BP.encodeToXML("test.txt");
 	}
 
