@@ -1,4 +1,4 @@
-package businessPlan;
+package models;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -16,6 +16,7 @@ public abstract class BusinessPlan implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 8935223403182446534L;
+	public String name;
 	public Section root;
 	public String department;
 	public int year;
@@ -24,8 +25,9 @@ public abstract class BusinessPlan implements Serializable
 
 	@Override
 	public String toString() {
-		return "BusinessPlan [root=" + root + ", department=" + department + ", year=" + year + ", isEditable="
-				+ isEditable + "]";
+		return name+" ("+year+")";
+//		//return "BusinessPlan [root=" + root + ", department=" + department + ", year=" + year + ", isEditable="
+//				+ isEditable + "]";
 	}
 
 	public abstract void addSection(Section parent);// the only abstract method

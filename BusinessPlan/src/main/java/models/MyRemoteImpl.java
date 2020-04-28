@@ -1,4 +1,4 @@
-package businessPlan;
+package models;
 
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
@@ -110,7 +110,21 @@ public class MyRemoteImpl implements MyRemote {
     	loginPerson=null;
     	System.out.println("user logout from Server.");
     }
-      
+    
+    //called by client askForAllBP function
+    public ArrayList<BusinessPlan> findDepAllBP(){
+    	ArrayList<BusinessPlan> DepAllBP= new ArrayList<BusinessPlan>();
+    	if(loginPerson==null) {
+    		System.out.println("PLEASE LOGIN FIRST.");
+    		return null;
+    	}
+    	for (int i=0; i<storedBP.size();i++){
+    		if((storedBP.get(i).department.equals(loginPerson.department))){
+    			DepAllBP.add(storedBP.get(i));
+    		}
+    	}
+    	return DepAllBP;
+    }
     //called by client askForBP function
     public BusinessPlan findBP(int year) {
     	if(loginPerson==null) {

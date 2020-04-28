@@ -1,6 +1,7 @@
-package businessPlan;
+package models;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public class MyRemoteClient {
 
@@ -88,7 +89,17 @@ public class MyRemoteClient {
     		System.out.println("Sorry, You're not a admin. You CAN'T add a person");
     	}
     }
-    
+    //only client's department
+    public ArrayList<BusinessPlan> askForAllBP() {
+    	try {
+			ArrayList<BusinessPlan> copy=server.findDepAllBP();
+			return copy;
+		} catch (RemoteException e) {
+			System.err.println("Client exception: " + e.toString());
+	        e.printStackTrace();
+		}
+    	return null;
+    }
     public void askForBP(int year){
     	try {
     		currentBP=server.findBP(year);

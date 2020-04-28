@@ -1,4 +1,4 @@
-package businessPlan;
+package models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ public class Section implements Serializable
 {
 
 	private static final long serialVersionUID = 3004879294918214266L;
-	String name;
-	String content = "";
-	Section parent = null;
+	public String name;
+	public String content = "";
+	public Section parent = null;
 	public ArrayList<Section> children = new ArrayList<Section>();
 
 	// default constructor for XML

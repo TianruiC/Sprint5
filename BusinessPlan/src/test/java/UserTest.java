@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import businessPlan.BusinessPlan;
-import businessPlan.MyRemote;
-import businessPlan.MyRemoteClient;
-import businessPlan.MyRemoteImpl;
-import businessPlan.Person;
-import businessPlan.VMOSA;
+import models.BusinessPlan;
+import models.MyRemote;
+import models.MyRemoteClient;
+import models.MyRemoteImpl;
+import models.Person;
+import models.VMOSA;
 
 class UserTest {
 
@@ -37,7 +37,7 @@ class UserTest {
 		
 		try {
 				//get the server ready
-			Registry registry = LocateRegistry.createRegistry(1199);
+			Registry registry = LocateRegistry.createRegistry(1299);
 			MyRemoteImpl server = new MyRemoteImpl();
 			
 			server.setStoredBP(storedBP);

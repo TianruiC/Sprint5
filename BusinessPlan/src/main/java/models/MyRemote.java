@@ -1,4 +1,4 @@
-package businessPlan;
+package models;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -14,4 +14,5 @@ public interface MyRemote extends Remote {
     public void changeEditable(int year, boolean bool) throws RemoteException;
     public void addPerson(String username, String password, String department, Boolean isAdmin)throws RemoteException;
     public void logOut() throws RemoteException;
+    public ArrayList<BusinessPlan> findDepAllBP() throws RemoteException;
 }

@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import businessPlan.BusinessPlan;
-import businessPlan.MyRemote;
-import businessPlan.MyRemoteImpl;
-import businessPlan.Person;
-import businessPlan.VMOSA;
+import models.BusinessPlan;
+import models.MyRemote;
+import models.MyRemoteImpl;
+import models.Person;
+import models.VMOSA;
 
 class EncodeDecodeTest {
 

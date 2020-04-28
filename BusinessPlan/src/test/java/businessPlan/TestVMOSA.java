@@ -5,9 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
-import businessPlan.BusinessPlan;
-import businessPlan.Section;
-import businessPlan.VMOSA;
+
+import models.BusinessPlan;
+import models.Section;
+import models.VMOSA;
 
 class TestVMOSA
 {

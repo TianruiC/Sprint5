@@ -1,4 +1,4 @@
-package businessPlan;
+package models;
 
 public class CNTRAssessment extends BusinessPlan
 {
