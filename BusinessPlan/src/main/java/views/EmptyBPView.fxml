@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.NewBPController">
    <top>
       <HBox prefHeight="46.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -55,17 +55,17 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" promptText="Choose a type" GridPane.columnIndex="1">
+            <ComboBox fx:id="BPtypeBox" prefWidth="150.0" promptText="Choose a type" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" top="10.0" />
                </GridPane.margin>
             </ComboBox>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="NewName" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="HappyNewYear" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
@@ -86,12 +86,12 @@
    <bottom>
       <HBox prefHeight="75.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Create">
+            <Button mnemonicParsing="false" onAction="#onClickCreate" text="Create">
                <HBox.margin>
                   <Insets left="70.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
                <HBox.margin>
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>

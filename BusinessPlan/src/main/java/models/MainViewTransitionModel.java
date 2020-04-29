@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import views.BPListController;
+import views.NewBPController;
 import views.PersonalInfoController;
 
 public class MainViewTransitionModel implements ViewTransitionModelInterface {
@@ -67,8 +68,8 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 	    try {
 	      Pane view = loader.load();
 	      mainview.setCenter(view);
-//	      PersonalInfoController cont = loader.getController();
-//	      cont.setModel(model);
+	      NewBPController cont = loader.getController();
+	      cont.setModel(model);
 	      
 	      
 	    } catch (IOException e) {
@@ -77,4 +78,11 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 	    }
 		
 	}
+
+	@Override
+	public void logout() {
+		model.client.logOut();
+		
+	}
+	
 }

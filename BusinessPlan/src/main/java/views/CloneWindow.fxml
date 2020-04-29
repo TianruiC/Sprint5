@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CloneWindowController">
    <top>
       <HBox prefHeight="50.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="CurrentBPName">
+            <Label fx:id="currentBPName" text="CurrentBPName">
                <font>
                   <Font size="24.0" />
                </font>
@@ -27,12 +27,12 @@
    <bottom>
       <HBox prefHeight="69.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Clone BP">
+            <Button mnemonicParsing="false" onAction="#onClickClone" text="Clone BP">
                <HBox.margin>
                   <Insets left="70.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
                <HBox.margin>
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
@@ -50,7 +50,7 @@
                         <Insets left="40.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="NewBPName">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
@@ -64,7 +64,7 @@
                         <Insets left="40.0" top="30.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="year">
                      <HBox.margin>
                         <Insets left="60.0" top="25.0" />
                      </HBox.margin>
