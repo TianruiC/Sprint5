@@ -48,7 +48,7 @@ public class Main extends Application {
 		storedUser.add(wynnie);
 		
 		//
-		Registry registry = LocateRegistry.createRegistry(5121);
+		Registry registry = LocateRegistry.createRegistry(1099);
 		MyRemoteImpl server = new MyRemoteImpl();
 		
 		server.setStoredBP(storedBP);
@@ -60,18 +60,21 @@ public class Main extends Application {
 		MyRemoteClient client=new MyRemoteClient(serverInterface);
 		
 		//suppose we logined as wynnie
-		client.askForLogin("wynnie","wynnie");
+		//client.askForLogin("wynnie","wynnie");
 		
-		MainViewModel model = new MainViewModel(client);
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../views/MainPageShell.fxml")); 
 		BorderPane view = loader.load();
+		MainViewModel model = new MainViewModel(client,view);
 		MainController cont = loader.getController();
 		MainViewTransitionModel vm =new MainViewTransitionModel(view,model); 
 	    cont.setModel(vm);
-	    vm.showPersonInfo();
+	    cont.setDisabled(true);
+	    //vm.showPersonInfo();
 	    
+	    //The login page needs the MainController
+	    vm.showLoginPage(cont);
 		
 		Scene s = new Scene(view);
 		stage.setScene(s);

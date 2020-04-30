@@ -1,33 +1,20 @@
 package views;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import main.Main;
 import models.BusinessPlan;
 import models.MainViewModel;
+import models.MainViewTransitionModel;
+import models.ViewTransitionModelInterface;
 
 public class BPListController {
 
-	MainViewModel model;  
+	MainViewModel model; 
 	ObservableList<BusinessPlan> BPList= FXCollections.observableArrayList();
 	
     public void setModel(MainViewModel newModel)
@@ -56,22 +43,8 @@ public class BPListController {
     	BusinessPlan clickedBP=BPListView.getSelectionModel().getSelectedItem();
     	System.out.println("Clone Clicked on " + clickedBP);
     	if(clickedBP!=null) {
-    		try {
-              Stage stage = new Stage();
-              FXMLLoader loader = new FXMLLoader();
-              loader.setLocation(Main.class.getResource("../views/CloneWindow.fxml")); 
-              stage.setTitle("Clone Window");
-              BorderPane view = loader.load();
-              CloneWindowController cont = loader.getController();
-//              cont.setModel(model);
-              Scene s = new Scene(view);
-              stage.setScene(s);
-              stage.show();
-              
-          }
-          catch (IOException e) {
-              e.printStackTrace();
-          }
+    		model.client.askForBP(clickedBP.year);
+            model.showCloneView();
     	}
     }
     

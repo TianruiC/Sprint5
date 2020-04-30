@@ -28,7 +28,7 @@
                <children>
                   <Pane prefHeight="49.0" prefWidth="167.0">
                      <children>
-                        <Button layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickPersonalInfo" text="Personal Info">
+                        <Button fx:id="personalInfo" layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickPersonalInfo" text="Personal Info">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -43,7 +43,7 @@
                   </Pane>
                   <Pane prefHeight="49.0" prefWidth="167.0">
                      <children>
-                        <Button layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickSavedBPs" text="Saved BPs">
+                        <Button fx:id="savedBPs" layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickSavedBPs" text="Saved BPs">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -55,7 +55,7 @@
                   </Pane>
                   <Pane prefHeight="49.0" prefWidth="167.0">
                      <children>
-                        <Button layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickCreateNewBP" text="Create New BP">
+                        <Button fx:id="createBP" layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickCreateNewBP" text="Create New BP">
                            <font>
                               <Font size="14.0" />
                            </font>

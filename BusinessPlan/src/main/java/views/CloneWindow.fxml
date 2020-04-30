@@ -18,7 +18,7 @@
                   <Font size="24.0" />
                </font>
                <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
+                  <Insets bottom="30.0" left="10.0" top="10.0" />
                </HBox.margin>
             </Label>
          </children>
@@ -69,6 +69,15 @@
                         <Insets left="60.0" top="25.0" />
                      </HBox.margin>
                   </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="Message" style="-fx-opacity: 0;" text="New BP Has Been Successfully Created !">
+                     <padding>
+                        <Insets bottom="10.0" left="25.0" top="25.0" />
+                     </padding>
+                  </Label>
                </children>
             </HBox>
          </children>

@@ -7,6 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import views.BPListController;
+import views.CloneWindowController;
+import views.LoginController;
+import views.MainController;
 import views.NewBPController;
 import views.PersonalInfoController;
 
@@ -83,6 +86,45 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 	public void logout() {
 		model.client.logOut();
 		
+		
 	}
+
+//	@Override
+//	public void showCloneView() {
+//		FXMLLoader loader = new FXMLLoader();
+//	    loader.setLocation(MainViewTransitionModel.class
+//	        .getResource("../views/CloneWindow.fxml"));
+//	    try {
+//	      Pane view = loader.load();
+//	      mainview.setCenter(view);
+//	      CloneWindowController cont = loader.getController();
+//	      cont.setModel(model);
+//	      
+//	    } catch (IOException e) {
+//	      // TODO Auto-generated catch block
+//	      e.printStackTrace();
+//	    }
+//		
+//	}
+	@Override
+	public void showLoginPage(MainController cont)
+	{
+		FXMLLoader loader = new FXMLLoader();
+	    loader.setLocation(MainViewTransitionModel.class
+	        .getResource("../views/login.fxml"));
+	    try {
+	      Pane view = loader.load();
+	      mainview.setCenter(view);
+	      LoginController loginCont = loader.getController();
+	      loginCont.setModel(model);
+	      loginCont.setParent(cont);
+	      
+	      
+	    } catch (IOException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	}
+	
 	
 }
