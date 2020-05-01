@@ -54,7 +54,7 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 	      mainview.setCenter(view);
 	      BPListController cont = loader.getController();
 	      cont.setModel(model);
-	      
+	      System.out.println(cont.BPList);
 	      
 	    } catch (IOException e) {
 	      // TODO Auto-generated catch block
@@ -89,23 +89,6 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 		
 	}
 
-//	@Override
-//	public void showCloneView() {
-//		FXMLLoader loader = new FXMLLoader();
-//	    loader.setLocation(MainViewTransitionModel.class
-//	        .getResource("../views/CloneWindow.fxml"));
-//	    try {
-//	      Pane view = loader.load();
-//	      mainview.setCenter(view);
-//	      CloneWindowController cont = loader.getController();
-//	      cont.setModel(model);
-//	      
-//	    } catch (IOException e) {
-//	      // TODO Auto-generated catch block
-//	      e.printStackTrace();
-//	    }
-//		
-//	}
 	@Override
 	public void showLoginPage(MainController cont)
 	{

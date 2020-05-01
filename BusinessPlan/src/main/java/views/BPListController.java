@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import models.BusinessPlan;
 import models.MainViewModel;
 import models.MainViewTransitionModel;
@@ -15,7 +16,7 @@ import models.ViewTransitionModelInterface;
 public class BPListController {
 
 	MainViewModel model; 
-	ObservableList<BusinessPlan> BPList= FXCollections.observableArrayList();
+	public ObservableList<BusinessPlan> BPList= FXCollections.observableArrayList();
 	
     public void setModel(MainViewModel newModel)
     {

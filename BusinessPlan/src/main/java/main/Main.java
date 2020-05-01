@@ -48,7 +48,7 @@ public class Main extends Application {
 		storedUser.add(wynnie);
 		
 		//
-		Registry registry = LocateRegistry.createRegistry(1099);
+		Registry registry = LocateRegistry.createRegistry(1699);
 		MyRemoteImpl server = new MyRemoteImpl();
 		
 		server.setStoredBP(storedBP);
