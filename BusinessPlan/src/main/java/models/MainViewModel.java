@@ -32,4 +32,22 @@ public class MainViewModel {
 	    }
 		
 	}
+	public void showCopyView() {
+		FXMLLoader loader = new FXMLLoader();
+	    loader.setLocation(MainViewTransitionModel.class
+	        .getResource("../views/BPMainView.fxml"));
+	    try {
+	      BorderPane view = loader.load();
+	      //CloneWindowController cont = loader.getController();
+	      //cont.setModel(this);
+	      Stage stage = new Stage();
+	      Scene s = new Scene(view);
+	      stage.setScene(s);
+	      stage.show();
+	    } catch (IOException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+		
+	}
 }
