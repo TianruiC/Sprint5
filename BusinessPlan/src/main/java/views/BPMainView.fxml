@@ -16,19 +16,19 @@
    <top>
       <ToolBar BorderPane.alignment="CENTER">
         <items>
-            <Button mnemonicParsing="false" text="Main Page">
+            <Button fx:id="MainPage" mnemonicParsing="false" onAction="#onClickBack" text="Main Page">
                <tooltip>
                   <Tooltip text="Go Back To Main Page" />
                </tooltip></Button>
-            <Button mnemonicParsing="false" text="Edit">
+            <Button fx:id="Edit" mnemonicParsing="false" onAction="#onClickEdit" text="Edit">
                <tooltip>
                   <Tooltip text="Edit the Business Plan" />
                </tooltip></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Delete">
+            <Button fx:id="Delete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickDelete" text="Delete">
                <tooltip>
                   <Tooltip text="Delete the Current  Part" />
                </tooltip></Button>
-            <Button mnemonicParsing="false" text="Add">
+            <Button fx:id="Add" mnemonicParsing="false" onAction="#onClickAdd" text="Add">
                <tooltip>
                   <Tooltip text="Add New Child Part to the Current Part" />
                </tooltip>

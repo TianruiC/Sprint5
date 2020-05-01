@@ -30,12 +30,15 @@ public class Main extends Application {
 		BP.year = 2020;
 		BP.department ="CS";
 		BP.isEditable=false;
+		BP.addSection(BP.root);
+		BP.addSection(BP.root.children.get(0));
 		
 		BusinessPlan BP2 = new VMOSA();
 		BP2.name="Hoaho";
 		BP2.year = 2009;
 		BP2.department ="CS";
 		BP2.isEditable=true;
+		BP2.addSection(BP2.root);
 		
 		ArrayList <BusinessPlan> storedBP=new ArrayList<BusinessPlan>();
 		storedBP.add(BP);
@@ -47,8 +50,7 @@ public class Main extends Application {
 		ArrayList <Person> storedUser=new ArrayList<Person>();
 		storedUser.add(wynnie);
 		
-		//
-		Registry registry = LocateRegistry.createRegistry(1699);
+		Registry registry = LocateRegistry.createRegistry(1099);
 		MyRemoteImpl server = new MyRemoteImpl();
 		
 		server.setStoredBP(storedBP);
@@ -59,10 +61,7 @@ public class Main extends Application {
 		MyRemote serverInterface=(MyRemote) registry.lookup("MyRemote");
 		MyRemoteClient client=new MyRemoteClient(serverInterface);
 		
-		//suppose we logined as wynnie
-		//client.askForLogin("wynnie","wynnie");
-		
-		
+		//set initial stage and view
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../views/MainPageShell.fxml")); 
 		BorderPane view = loader.load();
@@ -71,9 +70,7 @@ public class Main extends Application {
 		MainViewTransitionModel vm =new MainViewTransitionModel(view,model); 
 	    cont.setModel(vm);
 	    cont.setDisabled(true);
-	    //vm.showPersonInfo();
 	    
-	    //The login page needs the MainController
 	    vm.showLoginPage(cont);
 		
 		Scene s = new Scene(view);

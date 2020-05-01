@@ -48,12 +48,10 @@ public class MainController {
 
     @FXML
     void onClickSavedBPs(ActionEvent event) {
-    	//System.out.print("about to bo");
     	model.showBPlistView();
     }   
     @FXML
     void onClickLogout(ActionEvent event) {
-    	//System.out.print("about to logout");
     	model.logout();
     	this.setDisabled(true);
     	model.showLoginPage(this);

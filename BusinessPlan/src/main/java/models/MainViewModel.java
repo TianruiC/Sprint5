@@ -23,7 +23,7 @@ public class MainViewModel {
 
 	public void showCloneView() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MainViewTransitionModel.class
+		loader.setLocation(MainViewModel.class
 				.getResource("../views/CloneWindow.fxml"));
 		try {
 			Pane view = loader.load();
@@ -41,13 +41,15 @@ public class MainViewModel {
 	//switch to BPMainView window
 	public void showCopyView() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MainViewTransitionModel.class
+		loader.setLocation(MainViewModel.class
 				.getResource("../views/BPMainView.fxml"));
 		try {
 			BorderPane view = loader.load();
 			BPMainController cont = loader.getController();
 			model = new BPMainModel(client, view);
 			cont.setModel(model);
+			cont.setDisabled(true);
+			
 			Stage stage = new Stage();
 			Scene s = new Scene(view);
 			stage.setScene(s);
