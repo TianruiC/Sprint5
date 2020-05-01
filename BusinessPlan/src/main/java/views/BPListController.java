@@ -53,5 +53,11 @@ public class BPListController {
     void onClickCopy(ActionEvent event) {
     	BusinessPlan clickedBP=BPListView.getSelectionModel().getSelectedItem();
     	System.out.println("Copy Clicked on " + clickedBP);
+    	if(clickedBP!=null) {
+    		model.client.askForBP(clickedBP.year);
+    		Stage stage = (Stage) copy.getScene().getWindow();
+    		stage.close();
+            model.showCopyView();
+        }
     }
 }
