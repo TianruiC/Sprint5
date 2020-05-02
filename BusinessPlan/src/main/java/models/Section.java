@@ -17,11 +17,6 @@ public class Section implements Serializable
 	{
 		this("default");
 	}
-	
-	public String showContent() 
-	{
-		return name+":\n"+content;
-	}
 
 	public Section(String name)
 	{

@@ -66,8 +66,8 @@ public class Main extends Application {
 		//set initial stage and view
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../views/MainPageShell.fxml")); 
+		MainViewModel model = new MainViewModel(client);
 		BorderPane view = loader.load();
-		MainViewModel model = new MainViewModel(client,view);
 		MainController cont = loader.getController();
 		MainViewTransitionModel vm =new MainViewTransitionModel(view,model); 
 	    cont.setModel(vm);

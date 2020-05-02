@@ -1,8 +1,5 @@
 package views;
-import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -11,7 +8,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 import models.BPMainModel;
-import models.BPViewTransitionModel;
 import models.Section;
 
 
@@ -41,7 +37,10 @@ public class BPMainController {
 
 	@FXML
 	private Button MainPage;
-
+	
+	@FXML
+    private Button ViewBP;
+	
 	@FXML
 	private Button Edit;
 
@@ -56,7 +55,7 @@ public class BPMainController {
     //Don't want the user clicking things if they haven't select a specific section
     public void setDisabled(boolean val)
     {
-    	Edit.setDisable(val);
+    	//Edit.setDisable(val);
     	Delete.setDisable(val);
     	Add.setDisable(val);
     }
@@ -117,7 +116,7 @@ public class BPMainController {
     
     @FXML
     void onClickAdd(ActionEvent event) {
-
+ 
     }
 
     @FXML
@@ -127,7 +126,16 @@ public class BPMainController {
 
     @FXML
     void onClickEdit(ActionEvent event) {
-
+    	Section clickedSection=outlineTree.getSelectionModel().getSelectedItem().getValue();
+    	System.out.println(clickedSection);
+    	if(clickedSection!=null) {
+    		model.showEditView(clickedSection);
+        }
+    	
+    }
+    @FXML
+    void onClickView(ActionEvent event) {
+    	model.showTreeView();
     }
 
 }

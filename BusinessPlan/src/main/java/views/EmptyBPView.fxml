@@ -60,12 +60,12 @@
                   <Insets right="10.0" top="10.0" />
                </GridPane.margin>
             </ComboBox>
-            <TextField fx:id="NewName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField id="NewBPNameTextField" fx:id="NewName" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="HappyNewYear" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField id="YearTextField" fx:id="HappyNewYear" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
@@ -86,12 +86,12 @@
    <bottom>
       <HBox prefHeight="75.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onClickCreate" text="Create">
+            <Button id="createButton" mnemonicParsing="false" onAction="#onClickCreate" text="Create">
                <HBox.margin>
                   <Insets left="70.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
+            <Button id="cancelButton" mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
                <HBox.margin>
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>

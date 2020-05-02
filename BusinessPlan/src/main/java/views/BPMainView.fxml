@@ -20,6 +20,11 @@
                <tooltip>
                   <Tooltip text="Go Back To Main Page" />
                </tooltip></Button>
+            <Button fx:id="ViewBP" mnemonicParsing="false" onAction="#onClickView" text="View BP">
+               <tooltip>
+                  <Tooltip text="View the whole Business Plan" />
+               </tooltip>
+            </Button>
             <Button fx:id="Edit" mnemonicParsing="false" onAction="#onClickEdit" text="Edit">
                <tooltip>
                   <Tooltip text="Edit the Business Plan" />

@@ -16,9 +16,9 @@ public class MainViewModel {
 	public MyRemoteClient client;
 	public BorderPane mainview;
 
-	public MainViewModel(MyRemoteClient wowclient,BorderPane view) {
+	public MainViewModel(MyRemoteClient wowclient) {
 		this.client=wowclient;
-		this.mainview=view;
+		//this.mainview=view;
 	}
 
 	public void showCloneView() {

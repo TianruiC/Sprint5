@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.BPTreeController">
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.BPTreeController">
    <children>
       <HBox>
          <children>
@@ -29,6 +29,6 @@
             </Label>
          </children>
       </HBox>
-      <TreeView fx:id="BPTreeView" />
+      <TreeView fx:id="BPTreeView" prefHeight="570.0" prefWidth="454.0" />
    </children>
 </VBox>

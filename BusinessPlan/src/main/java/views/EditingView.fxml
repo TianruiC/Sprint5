@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<BorderPane prefHeight="765.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.BPEditingController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="869.0" prefWidth="994.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Part: Vision 1">
                <font>
@@ -22,15 +21,15 @@
                   <Insets left="8.0" />
                </VBox.margin>
             </Label>
-            <TextArea prefHeight="200.0" prefWidth="200.0" text="Come to edit me please !!!" />
+            <TextArea fx:id="ContentTextArea" prefHeight="703.0" prefWidth="728.0" text="Come to edit me please !!!" />
          </children>
       </VBox>
    </center>
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ToolBar prefHeight="0.0" prefWidth="784.0" BorderPane.alignment="CENTER">
         <items>
-          <Button mnemonicParsing="false" text="Save" />
-            <Button mnemonicParsing="false" text="Cancel" />
+          <Button mnemonicParsing="false" onAction="#onClickSave" text="Save" />
+            <Button mnemonicParsing="false" onAction="#onClickCancel" text="Cancel" />
         </items>
       </ToolBar>
    </top>

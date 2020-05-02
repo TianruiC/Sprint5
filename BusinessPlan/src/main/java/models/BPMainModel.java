@@ -1,21 +1,13 @@
 package models;
 
 import java.io.IOException;
-<<<<<<< HEAD
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-=======
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import views.BPMainController;
->>>>>>> eb4053adcdcc167a5385cce87cdb303e2bc06ca3
+import views.BPEditingController;
+import views.BPTreeController;
 import views.MainController;
 
 public class BPMainModel {
@@ -39,7 +31,7 @@ public class BPMainModel {
 		try {
 			BorderPane view = loader.load();
 			MainController cont = loader.getController();
-			modelV = new MainViewModel(client,view);
+			modelV = new MainViewModel(client);
 			model = new MainViewTransitionModel(view,modelV);
 			cont.setModel(model);
 			model.showPersonInfo();
@@ -51,13 +43,37 @@ public class BPMainModel {
 			e.printStackTrace();
 		}
 		
-<<<<<<< HEAD
-	}		
-=======
 	}
-	
-	
-	
+	public void showEditView(Section cur) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(BPMainModel.class
+				.getResource("../views/EditingView.fxml"));
+		try {
+			BorderPane view = loader.load();
+			BPEditingController cont = loader.getController();
+			mainview.setCenter(view);
+			cont.setModel(this,cur);
+
+
+		}	
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void showTreeView() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(BPMainModel.class
+				.getResource("../views/BPTreeView.fxml"));
+		try {
+			Pane view = loader.load();
+			BPTreeController cont = loader.getController();
+			mainview.setCenter(view);
+			cont.setModel(this);
+		}	
+		catch (IOException e) {
+			e.printStackTrace();
 		
->>>>>>> eb4053adcdcc167a5385cce87cdb303e2bc06ca3
+		}
+	
+	}
 }
