@@ -8,6 +8,7 @@ public class CNTRAssessment extends BusinessPlan
 	// create an empty tree for CNTR Assessment
 	public CNTRAssessment()
 	{
+		this.type="CNTRAssessment";
 		root = new Section("Centre College Institutional Mission Statement");
 		Section objective = new Section("Program Goals and Student Learning Objective");
 		Section progMission = new Section("Program Mission Statement");

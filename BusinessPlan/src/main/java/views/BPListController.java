@@ -58,11 +58,12 @@ public class BPListController {
     	if(clickedBP!=null) {
     		//set selected BP to currentBP
     		model.client.askForBP(clickedBP.year);
+    		System.out.println(model.client.getCurrentBP());
     		//close current BPList window
     		Stage stage = (Stage) copy.getScene().getWindow();
     		stage.close();
     		//show BPMainView window
-            model.showCopyView();
+            model.showCopyView(); 
         }
     }
 }

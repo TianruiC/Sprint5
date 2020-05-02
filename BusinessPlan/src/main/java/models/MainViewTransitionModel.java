@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import views.BPListController;
-import views.CloneWindowController;
 import views.LoginController;
 import views.MainController;
 import views.NewBPController;

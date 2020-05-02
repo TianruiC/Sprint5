@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.BPTreeController">
    <children>
       <HBox>
          <children>
-            <Label text="BPName" textAlignment="CENTER">
+            <Label fx:id="BPNameLabel" text="BPName" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -19,7 +19,7 @@
                   <Insets left="10.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="(view only, click specific part to change)">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="(view only, click specific part in outline tree to change)">
                <font>
                   <Font size="14.0" />
                </font>
@@ -29,6 +29,6 @@
             </Label>
          </children>
       </HBox>
-      <TreeView />
+      <TreeView fx:id="BPTreeView" />
    </children>
 </VBox>

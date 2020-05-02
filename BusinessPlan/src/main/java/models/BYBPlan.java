@@ -9,6 +9,7 @@ public class BYBPlan extends BusinessPlan
 	// create an empty tree of BYB plan
 	public BYBPlan()
 	{
+		this.type="BYBPlan";
 		//MS->Objective->Plan
 		root = new Section("BYB Mission Statement");
 		Section objective = new Section("BYB Objectives");

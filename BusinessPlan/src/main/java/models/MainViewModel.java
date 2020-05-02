@@ -8,13 +8,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import views.BPMainController;
+import views.BPTreeController;
 import views.CloneWindowController;
 
 public class MainViewModel {
 
 	public MyRemoteClient client;
 	public BorderPane mainview;
-	public BPMainModel model;
 
 	public MainViewModel(MyRemoteClient wowclient,BorderPane view) {
 		this.client=wowclient;
@@ -45,11 +45,16 @@ public class MainViewModel {
 				.getResource("../views/BPMainView.fxml"));
 		try {
 			BorderPane view = loader.load();
-			BPMainController cont = loader.getController();
-			model = new BPMainModel(client, view);
-			cont.setModel(model);
-			cont.setDisabled(true);
+			System.out.println(client.getCurrentBP());
 			
+			BPMainModel model = new BPMainModel(client, view);
+			BPMainController cont = loader.getController();
+			//BPViewTransitionModel bptran = new BPViewTransitionModel(view, model);
+			cont.setModel(model);
+			
+			//bptran.showBPtree(model);
+			
+			cont.setDisabled(true);			
 			Stage stage = new Stage();
 			Scene s = new Scene(view);
 			stage.setScene(s);

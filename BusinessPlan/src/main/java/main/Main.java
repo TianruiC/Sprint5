@@ -31,6 +31,8 @@ public class Main extends Application {
 		BP.department ="CS";
 		BP.isEditable=false;
 		BP.addSection(BP.root);
+		BP.root.content=("this is the vision");
+		BP.root.children.get(0).content=("this is the misson");
 		BP.addSection(BP.root.children.get(0));
 		
 		BusinessPlan BP2 = new VMOSA();

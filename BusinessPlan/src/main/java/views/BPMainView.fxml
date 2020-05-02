@@ -41,7 +41,7 @@
          <items>
             <VBox prefHeight="225.0" prefWidth="248.0">
                <children>
-                  <Label alignment="CENTER" text="Business Plan Information: ">
+                  <Label alignment="CENTER" text="Business Plan Info:">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
@@ -139,4 +139,7 @@
          </items>
       </SplitPane>
    </left>
+   <center>
+      <TreeView fx:id="contentTree" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

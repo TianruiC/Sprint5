@@ -21,6 +21,7 @@ public abstract class BusinessPlan implements Serializable
 	public String department;
 	public int year;
 	public boolean isEditable;
+	public String type;
 	
 
 	@Override

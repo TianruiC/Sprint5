@@ -28,6 +28,10 @@ public class Section implements Serializable
 		return name;
 	}
 	
+	public String showContent() {
+		return name+":\n"+content;
+	}
+	
 	// getters and setters
 	public Section getParent()
 	{
