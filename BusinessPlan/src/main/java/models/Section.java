@@ -23,6 +23,11 @@ public class Section implements Serializable
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
+	
 	// getters and setters
 	public Section getParent()
 	{

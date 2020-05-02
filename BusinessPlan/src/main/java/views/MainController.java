@@ -55,7 +55,6 @@ public class MainController {
 
     @FXML
     void onClickSavedBPs(ActionEvent event) {
-    	//System.out.print("about to bo");
     	model.showBPlistView();
     }   
     @FXML
@@ -76,9 +75,9 @@ public class MainController {
         catch (IOException e) {
             e.printStackTrace();
         }
-//    	model.logout();
-//    	this.setDisabled(true);
-//    	model.showLoginPage(this);
+    	model.logout();
+    	this.setDisabled(true);
+    	model.showLoginPage(this);
     }
 
 }

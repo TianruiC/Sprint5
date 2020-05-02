@@ -12,23 +12,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.BPMainController">
    <top>
       <ToolBar BorderPane.alignment="CENTER">
         <items>
-            <Button mnemonicParsing="false" text="Main Page">
+            <Button fx:id="MainPage" mnemonicParsing="false" onAction="#onClickBack" text="Main Page">
                <tooltip>
                   <Tooltip text="Go Back To Main Page" />
                </tooltip></Button>
-            <Button mnemonicParsing="false" text="Edit">
+            <Button fx:id="Edit" mnemonicParsing="false" onAction="#onClickEdit" text="Edit">
                <tooltip>
                   <Tooltip text="Edit the Business Plan" />
                </tooltip></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Delete">
+            <Button fx:id="Delete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickDelete" text="Delete">
                <tooltip>
                   <Tooltip text="Delete the Current  Part" />
                </tooltip></Button>
-            <Button mnemonicParsing="false" text="Add">
+            <Button fx:id="Add" mnemonicParsing="false" onAction="#onClickAdd" text="Add">
                <tooltip>
                   <Tooltip text="Add New Child Part to the Current Part" />
                </tooltip>
@@ -57,7 +57,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="BP2020">
+                  <Label fx:id="BPname" text="BP2020">
                      <VBox.margin>
                         <Insets left="80.0" top="8.0" />
                      </VBox.margin>
@@ -73,7 +73,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="2020">
+                  <Label fx:id="BPyear" text="2020">
                      <VBox.margin>
                         <Insets left="80.0" top="8.0" />
                      </VBox.margin>
@@ -89,7 +89,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Computer Science">
+                  <Label fx:id="BPdep" text="Computer Science">
                      <VBox.margin>
                         <Insets left="80.0" top="8.0" />
                      </VBox.margin>
@@ -105,7 +105,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="VMOSA">
+                  <Label fx:id="BPtype" text="VMOSA">
                      <VBox.margin>
                         <Insets left="80.0" top="8.0" />
                      </VBox.margin>
@@ -121,7 +121,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Yes">
+                  <Label fx:id="BPedi" text="Yes">
                      <VBox.margin>
                         <Insets left="80.0" top="8.0" />
                      </VBox.margin>
@@ -133,7 +133,7 @@
             </VBox>
             <HBox prefHeight="200.0" prefWidth="250.0">
                <children>
-                  <TreeView prefHeight="200.0" prefWidth="250.0" />
+                  <TreeView fx:id="outlineTree" prefHeight="200.0" prefWidth="250.0" />
                </children>
             </HBox>
          </items>

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import models.BusinessPlan;
 import models.MainViewModel;
 import models.MainViewTransitionModel;
@@ -15,7 +16,7 @@ import models.ViewTransitionModelInterface;
 public class BPListController {
 
 	MainViewModel model; 
-	ObservableList<BusinessPlan> BPList= FXCollections.observableArrayList();
+	public ObservableList<BusinessPlan> BPList= FXCollections.observableArrayList();
 	
     public void setModel(MainViewModel newModel)
     {
@@ -53,5 +54,15 @@ public class BPListController {
     void onClickCopy(ActionEvent event) {
     	BusinessPlan clickedBP=BPListView.getSelectionModel().getSelectedItem();
     	System.out.println("Copy Clicked on " + clickedBP);
+    	
+    	if(clickedBP!=null) {
+    		//set selected BP to currentBP
+    		model.client.askForBP(clickedBP.year);
+    		//close current BPList window
+    		Stage stage = (Stage) copy.getScene().getWindow();
+    		stage.close();
+    		//show BPMainView window
+            model.showCopyView();
+        }
     }
 }
