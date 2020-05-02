@@ -1,5 +1,8 @@
 package views;
+import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -35,7 +38,7 @@ public class BPMainController {
 
 	@FXML
     private TreeView<String> contentTree;
-	
+
 	@FXML
 	private Button MainPage;
 
@@ -100,10 +103,6 @@ public class BPMainController {
 		addStringNodes(root, rootItem2);
 		contentTree.setShowRoot(true);
 		contentTree.setRoot(rootItem2);
-		
-		
-		
-
 	}
 	
     @FXML

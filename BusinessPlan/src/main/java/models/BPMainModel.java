@@ -1,11 +1,21 @@
 package models;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+=======
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.TreeItem;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import views.BPMainController;
+>>>>>>> eb4053adcdcc167a5385cce87cdb303e2bc06ca3
 import views.MainController;
 
 public class BPMainModel {
@@ -41,5 +51,13 @@ public class BPMainModel {
 			e.printStackTrace();
 		}
 		
+<<<<<<< HEAD
 	}		
+=======
+	}
+	
+	
+	
+		
+>>>>>>> eb4053adcdcc167a5385cce87cdb303e2bc06ca3
 }
