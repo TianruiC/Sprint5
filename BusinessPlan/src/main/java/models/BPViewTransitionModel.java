@@ -18,21 +18,21 @@ public class BPViewTransitionModel{
 	    model = newModel;
 	  }
 	
-	public void showBPtree(BPMainModel thismodel) {
-		
-		FXMLLoader loader = new FXMLLoader();
-	    loader.setLocation(BPViewTransitionModel.class
-	        .getResource("../views/BPTreeView.fxml"));
-	    try {
-	      Pane view = loader.load();
-	      mainview.setCenter(view);
-	      BPTreeController cont = loader.getController();
-	      cont.setModel(thismodel);
-	      
-	      
-	    } catch (IOException e) {
-	      // TODO Auto-generated catch block
-	      e.printStackTrace();
-	    }
-	}
+//	public void showBPtree(BPMainModel thismodel) {
+//		
+//		FXMLLoader loader = new FXMLLoader();
+//	    loader.setLocation(BPViewTransitionModel.class
+//	        .getResource("../views/BPTreeView.fxml"));
+//	    try {
+//	      Pane view = loader.load();
+//	      mainview.setCenter(view);
+//	      BPTreeController cont = loader.getController();
+//	      cont.setModel(thismodel);
+//	      
+//	      
+//	    } catch (IOException e) {
+//	      // TODO Auto-generated catch block
+//	      e.printStackTrace();
+//	    }
+//	}
 }

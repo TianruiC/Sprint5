@@ -53,7 +53,7 @@ public class NewBPController {
         	model.client.getCurrentBP().name=NewBPName;
         	model.client.getCurrentBP().year=NewBPYearInt;
         	System.out.println("Tried to add newBP"+NewBPtype +"with name:"+NewBPName+"in year:"+NewBPYearInt);
-        	System.out.println("Tried to add newBP"+NewBPtype +"with name:"+model.client.getCurrentBP().name+"in year:"+model.client.getCurrentBP().year);
+        	System.out.println("client: Tried to add newBP"+NewBPtype +"with name:"+model.client.getCurrentBP().name+"in year:"+model.client.getCurrentBP().year);
         	model.client.uploadBP();
     	}
 

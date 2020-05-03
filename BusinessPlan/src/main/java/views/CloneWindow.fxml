@@ -27,12 +27,12 @@
    <bottom>
       <HBox prefHeight="69.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onClickClone" text="Clone BP">
+            <Button id="cloneBP" mnemonicParsing="false" onAction="#onClickClone" text="Clone BP">
                <HBox.margin>
                   <Insets left="70.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
+            <Button id="cancelClone" mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
                <HBox.margin>
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
@@ -50,7 +50,7 @@
                         <Insets left="40.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="NewBPName">
+                  <TextField id="cloneName" fx:id="NewBPName">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
@@ -64,7 +64,7 @@
                         <Insets left="40.0" top="30.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="year">
+                  <TextField id="cloneYear" fx:id="year">
                      <HBox.margin>
                         <Insets left="60.0" top="25.0" />
                      </HBox.margin>

@@ -25,6 +25,7 @@ public class BPListController {
 		for (int i=0; i<Dulplicate.size();i++){
 			BPList.add(Dulplicate.get(i));
 		}
+		
       BPListView.setItems(BPList);
       
     }

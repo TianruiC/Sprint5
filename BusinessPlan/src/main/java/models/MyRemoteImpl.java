@@ -121,10 +121,14 @@ public class MyRemoteImpl implements MyRemote {
     	for (int i=0; i<storedBP.size();i++){
     		if((storedBP.get(i).department.equals(loginPerson.department))){
     			DepAllBP.add(storedBP.get(i));
-    		}
+    			System.out.println(loginPerson);
+    			System.out.println(storedBP.get(i));
+    			}
     	}
+    	System.out.println(DepAllBP);
     	return DepAllBP;
     }
+    
     //called by client askForBP function
     public BusinessPlan findBP(int year) {
     	if(loginPerson==null) {

@@ -55,12 +55,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="BPtypeBox" prefWidth="150.0" promptText="Choose a type" GridPane.columnIndex="1">
+            <ComboBox id="BPtypeBox" fx:id="BPtypeBox" prefWidth="150.0" promptText="Choose a type" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" top="10.0" />
                </GridPane.margin>
             </ComboBox>
-            <TextField id="NewBPNameTextField" fx:id="NewName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField id="NameTextField" fx:id="NewName" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>

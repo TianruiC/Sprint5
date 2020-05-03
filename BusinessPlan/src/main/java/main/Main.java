@@ -17,6 +17,7 @@ import models.MyRemoteClient;
 import models.MyRemoteImpl;
 import models.Person;
 import models.VMOSA;
+import views.LoginController;
 import views.MainController;
 
 public class Main extends Application {
@@ -48,11 +49,13 @@ public class Main extends Application {
 		
 		//initialize storedUser
 		Person wynnie=new Person("wynnie","wynnie","CS", true);
+		Person terry=new Person("terry","terry","CS", false);
 		
 		ArrayList <Person> storedUser=new ArrayList<Person>();
 		storedUser.add(wynnie);
+		storedUser.add(terry);
 		
-		Registry registry = LocateRegistry.createRegistry(1099);
+		Registry registry = LocateRegistry.createRegistry(1199);
 		MyRemoteImpl server = new MyRemoteImpl();
 		
 		server.setStoredBP(storedBP);
@@ -64,17 +67,27 @@ public class Main extends Application {
 		MyRemoteClient client=new MyRemoteClient(serverInterface);
 		
 		//set initial stage and view
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../views/MainPageShell.fxml")); 
-		MainViewModel model = new MainViewModel(client);
-		BorderPane view = loader.load();
-		MainController cont = loader.getController();
-		MainViewTransitionModel vm =new MainViewTransitionModel(view,model); 
-	    cont.setModel(vm);
-	    cont.setDisabled(true);
-	    
-	    vm.showLoginPage(cont);
+		FXMLLoader loader0 = new FXMLLoader();
+		loader0.setLocation(Main.class.getResource("../views/MainPageShell.fxml")); 
 		
+		BorderPane viewM = loader0.load();
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../views/login.fxml")); 
+		
+		BorderPane view = loader.load();
+
+		MainViewModel model = new MainViewModel(client,view);
+
+		LoginController cont = loader.getController();
+		MainController contM = loader0.getController();
+		
+		MainViewTransitionModel vm =new MainViewTransitionModel(viewM,model); 
+		contM.setModel(vm);
+		
+	    cont.setModel(model);
+	    cont.setParent(viewM, contM);
+
 		Scene s = new Scene(view);
 		stage.setScene(s);
 		stage.show();

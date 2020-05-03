@@ -7,7 +7,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import views.BPEditingController;
+import views.BPMainController;
 import views.BPTreeController;
+import views.LeaveController;
 import views.MainController;
 
 public class BPMainModel {
@@ -31,7 +33,7 @@ public class BPMainModel {
 		try {
 			BorderPane view = loader.load();
 			MainController cont = loader.getController();
-			modelV = new MainViewModel(client);
+			modelV = new MainViewModel(client,view);
 			model = new MainViewTransitionModel(view,modelV);
 			cont.setModel(model);
 			model.showPersonInfo();
@@ -60,6 +62,8 @@ public class BPMainModel {
 			e.printStackTrace();
 		}
 	}
+	
+	//show BP content tree
 	public void showTreeView() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(BPMainModel.class
@@ -75,5 +79,33 @@ public class BPMainModel {
 		
 		}
 	
+	}
+	
+	//show leave confirmation window
+	public void showLeaveConfirm(Stage stageP) {
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainViewModel.class
+				.getResource("../views/LeaveView.fxml"));
+		try {
+			BorderPane view = loader.load();
+
+			BPMainModel model = new BPMainModel(client, view);
+			LeaveController cont = loader.getController();
+
+			cont.setModel(model,stageP);
+		
+			Stage stage = new Stage();
+			Scene s = new Scene(view);
+			stage.setScene(s);
+			stage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+
+		
 	}
 }

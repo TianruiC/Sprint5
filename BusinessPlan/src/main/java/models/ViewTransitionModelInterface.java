@@ -9,4 +9,5 @@ public interface ViewTransitionModelInterface {
 	public void showEmptyBPView();
 	public void logout();
 	public void showLoginPage(MainController cont);
+
 }

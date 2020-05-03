@@ -30,8 +30,8 @@ import models.MainViewTransitionModel;
 public class LoginController {
 
 	MainViewModel model;
-	//Need access to the MainController to re-enable the buttons after login
 	MainController parent;
+	BorderPane view;
 	
 	
     public void setModel(MainViewModel newModel)
@@ -39,8 +39,9 @@ public class LoginController {
       model=newModel;
     }
     
-    public void setParent(MainController pt)
+    public void setParent(BorderPane viewM, MainController pt)
     {
+    	view = viewM;
     	parent = pt;
     }
     
@@ -68,9 +69,16 @@ public class LoginController {
     	model.client.askForLogin(username, password);
     	if(model.client.getLoginPerson()!=null)
     	{
-        	parent.setDisabled(false);
         	error.setOpacity(0);
+        	Stage stage0 = (Stage) loginButton.getScene().getWindow();
+    		stage0.close();
+        	
+        	Scene s = new Scene(view);
+        	Stage stage = new Stage();
+    		stage.setScene(s);
+    		stage.show();
         	parent.model.showPersonInfo();
+        	System.out.println(model.client.getLoginPerson());
     	}
     	else
     	{

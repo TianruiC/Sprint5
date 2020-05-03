@@ -52,6 +52,8 @@ public class BPMainController {
 
 	BPMainModel model;
 	
+	Stage currentStage;
+	
     //Don't want the user clicking things if they haven't select a specific section
     public void setDisabled(boolean val)
     {
@@ -60,6 +62,7 @@ public class BPMainController {
     	Add.setDisable(val);
     }
 
+    //add tree items to the outline tree
 	private void addNodes(Section p, TreeItem<Section> t) {
 		t.setExpanded(true);
 		for (Section child : p.children) {
@@ -68,19 +71,22 @@ public class BPMainController {
 			addNodes(child, node);
 		}
 	}
-	 private void addStringNodes(Section p, TreeItem<String> t) {
-			t.setExpanded(true);
-			for (Section child : p.children) {
-				TreeItem<String> node = new TreeItem<String>(child.showContent());
-				t.getChildren().add(node);
-				addStringNodes(child, node);
-			}
+	
+	//add tree items to the content tree
+	private void addStringNodes(Section p, TreeItem<String> t) {
+		t.setExpanded(true);
+		for (Section child : p.children) {
+			TreeItem<String> node = new TreeItem<String>(child.showContent());
+			t.getChildren().add(node);
+			addStringNodes(child, node);
 		}
+	}
 
 	public void setModel(BPMainModel newmodel) {
 		model = newmodel;
 		Section root = model.client.getCurrentBP().getRoot();
-
+		
+		//show BP info details
 		BPname.textProperty().set(model.client.getCurrentBP().name);
 		BPyear.textProperty().set(Integer.toString(model.client.getCurrentBP().year));
 		BPdep.textProperty().set(model.client.getCurrentBP().department);
@@ -92,6 +98,7 @@ public class BPMainController {
 	    	BPedi.textProperty().set("No");
 	    }
 		
+		//set tree views
 		TreeItem<Section> rootItem = new TreeItem<Section>(root);
 		addNodes(root, rootItem);
 		outlineTree.setShowRoot(true);
@@ -106,11 +113,12 @@ public class BPMainController {
 	
     @FXML
     void onClickBack(ActionEvent event) {
-    	//close current BPMain window
+    	//save the current working BPMain window
     	Stage stage = (Stage) MainPage.getScene().getWindow();
-    	stage.close();
-    	//show MainView window
-    	model.showMainView();	
+        currentStage = stage;
+    	
+    	//show Leave Confirmation window
+    	model.showLeaveConfirm(stage);
 
     }
     

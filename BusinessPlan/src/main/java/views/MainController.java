@@ -34,14 +34,6 @@ public class MainController {
 	@FXML
 	private Button createBP;
 	
-    //Don't want the user clicking things if they are not logged in
-    public void setDisabled(boolean val)
-    {
-    	logout.setDisable(val);
-    	savedBPs.setDisable(val);
-    	createBP.setDisable(val);
-    	personalInfo.setDisable(val);
-    }
     
     @FXML
     void onClickCreateNewBP(ActionEvent event) {
@@ -59,25 +51,11 @@ public class MainController {
     }   
     @FXML
     void onClickLogout(ActionEvent event) {
-    	//System.out.print("about to logout");
-    	try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-    		loader.setLocation(Main.class.getResource("../views/LeaveView.fxml"));
-            stage.setTitle("U Sure?");
-            LeaveController con=loader.getController();
-            // con.setContrl(this);
-            BorderPane view = loader.load();
-            Scene s = new Scene(view);
-    		stage.setScene(s);
-    		stage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    	model.logout();
-    	this.setDisabled(true);
+    	model.logout(); 
+    	Stage stage = (Stage) logout.getScene().getWindow();
+		stage.close();
     	model.showLoginPage(this);
+		 
     }
 
 }

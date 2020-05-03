@@ -4,8 +4,11 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import main.Main;
 import views.BPListController;
 import views.LoginController;
 import views.MainController;
@@ -83,30 +86,47 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 
 	@Override
 	public void logout() {
-		model.client.logOut();
-		
+		model.client.logOut();	
 		
 	}
 
 	@Override
-	public void showLoginPage(MainController cont)
+	public void showLoginPage(MainController cont) 
 	{
-		FXMLLoader loader = new FXMLLoader();
-	    loader.setLocation(MainViewTransitionModel.class
-	        .getResource("../views/login.fxml"));
-	    try {
-	      Pane view = loader.load();
-	      mainview.setCenter(view);
-	      LoginController loginCont = loader.getController();
-	      loginCont.setModel(model);
-	      loginCont.setParent(cont);
-	      
-	      
-	    } catch (IOException e) {
-	      // TODO Auto-generated catch block
-	      e.printStackTrace();
-	    }
+		try {
+			FXMLLoader loader0 = new FXMLLoader();
+			loader0.setLocation(Main.class.getResource("../views/MainPageShell.fxml")); 
+
+			BorderPane viewM = loader0.load();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../views/login.fxml")); 
+
+			BorderPane view = loader.load();
+
+			MainViewModel modelM = new MainViewModel(model.client,view);
+
+			LoginController contL = loader.getController();
+			MainController contM = loader0.getController();
+
+			MainViewTransitionModel vm =new MainViewTransitionModel(viewM,modelM); 
+			contM.setModel(vm);
+
+			contL.setModel(modelM);
+			contL.setParent(viewM, contM);
+
+			Stage stage = new Stage();
+			Scene s = new Scene(view);
+			stage.setScene(s);
+			stage.show();
+
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
+
+
 	
 }

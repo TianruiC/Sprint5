@@ -98,7 +98,13 @@ public class MyRemoteClient {
 			System.err.println("Client exception: " + e.toString());
 	        e.printStackTrace();
 		}
-    	return null;
+    	//hint
+    	BusinessPlan BP= new VMOSA();
+    	BP.name = "find nothing";
+    	ArrayList<BusinessPlan> empty = new ArrayList<BusinessPlan>();
+    	empty.add(BP);
+    	
+    	return empty;
     }
     public void askForBP(int year){
     	try {
