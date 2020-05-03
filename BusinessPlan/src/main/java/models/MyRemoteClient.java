@@ -113,12 +113,12 @@ public class MyRemoteClient {
 			 System.err.println("Client exception: " + e.toString());
 	         e.printStackTrace();
 		}
-    	if(currentBP!=null) {
-    		System.out.println("currentBP found.");
-		}
-    	else {
-    		System.out.println("currentBP not found.");
-    	}
+//    	if(currentBP!=null) {
+//    		System.out.println("currentBP found."+currentBP);
+//		}
+//    	else {
+//    		System.out.println("currentBP not found.");
+//    	}
     }
     
 	public void newBP(String Type) {

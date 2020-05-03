@@ -54,14 +54,6 @@ public class BPMainController {
 	
 	Stage currentStage;
 	
-    //Don't want the user clicking things if they haven't select a specific section
-    public void setDisabled(boolean val)
-    {
-    	//Edit.setDisable(val);
-    	Delete.setDisable(val);
-    	Add.setDisable(val);
-    }
-
     //add tree items to the outline tree
 	private void addNodes(Section p, TreeItem<Section> t) {
 		t.setExpanded(true);
@@ -96,6 +88,10 @@ public class BPMainController {
 	    }
 	    else {
 	    	BPedi.textProperty().set("No");
+	    	//can not use buttons to make changes
+	    	Edit.setDisable(true);
+	    	Delete.setDisable(true);
+	    	Add.setDisable(true);
 	    }
 		
 		//set tree views
@@ -135,6 +131,7 @@ public class BPMainController {
     @FXML
     void onClickEdit(ActionEvent event) {
     	Section clickedSection=outlineTree.getSelectionModel().getSelectedItem().getValue();
+    	
     	System.out.println(clickedSection);
     	if(clickedSection!=null) {
     		model.showEditView(clickedSection);

@@ -1,12 +1,13 @@
 package views;
 import static org.junit.jupiter.api.Assertions.fail;
-
+import java.rmi.RemoteException;
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -31,50 +32,67 @@ import models.VMOSA;
 @ExtendWith(ApplicationExtension.class)
 public class TestBPListView {
 	
+	
+	static MyRemoteImpl server;
+	static MyRemoteClient client;
+	@BeforeAll
+	/* Initialize server and client */
+	static void serverInitialization()
+	{		
+		try
+		{		
+			Registry registry = LocateRegistry.createRegistry(1099);
+
+			server = new MyRemoteImpl();
+			
+			//initialize
+			BusinessPlan BP = new VMOSA();
+			BP.name="Giao";
+			BP.year = 2020;
+			BP.department ="CS";
+			BP.isEditable=false;
+			BP.addSection(BP.root);
+			BP.root.content=("this is the vision");
+			BP.root.children.get(0).content=("this is the misson");
+			BP.addSection(BP.root.children.get(0));
+			
+
+			BusinessPlan BP2 = new VMOSA();
+			BP2.name="Hoaho";
+			BP2.year = 2009;
+			BP2.department ="CS";
+			BP2.isEditable=true;
+			BP2.addSection(BP2.root);
+
+			ArrayList <BusinessPlan> storedBP=new ArrayList<BusinessPlan>();
+			storedBP.add(BP);
+			storedBP.add(BP2);
+
+			//initialize storedUser
+			Person wynnie=new Person("wynnie","wynnie","CS", true);
+			Person terry=new Person("terry","terry","CS", false);
+
+			ArrayList <Person> storedUser=new ArrayList<Person>();
+			storedUser.add(wynnie);
+			storedUser.add(terry);
+			
+			server.setStoredBP(storedBP);
+			server.setStoredUser(storedUser);
+			
+		} catch (RemoteException e)
+		{
+			e.printStackTrace();
+		}
+		client = new MyRemoteClient(server);
+	}
+	
+	
+	
 	@Start //Before
 	private void start(Stage stage)
 	{
-		//initialize
-		BusinessPlan BP = new VMOSA();
-		BP.name="Giao";
-		BP.year = 2020;
-		BP.department ="CS";
-		BP.isEditable=false;
-		BP.addSection(BP.root);
-		BP.root.content=("this is the vision");
-		BP.root.children.get(0).content=("this is the misson");
-		BP.addSection(BP.root.children.get(0));
-		
-
-		BusinessPlan BP2 = new VMOSA();
-		BP2.name="Hoaho";
-		BP2.year = 2009;
-		BP2.department ="CS";
-		BP2.isEditable=true;
-		BP2.addSection(BP2.root);
-
-		ArrayList <BusinessPlan> storedBP=new ArrayList<BusinessPlan>();
-		storedBP.add(BP);
-		storedBP.add(BP2);
-
-		//initialize storedUser
-		Person wynnie=new Person("wynnie","wynnie","CS", true);
-		Person terry=new Person("terry","terry","CS", false);
-
-		ArrayList <Person> storedUser=new ArrayList<Person>();
-		storedUser.add(wynnie);
-		storedUser.add(terry);
 		
 		try {
-			//set server & client
-			Registry registry = LocateRegistry.createRegistry(1399);
-			MyRemoteImpl server = new MyRemoteImpl();		
-			server.setStoredBP(storedBP);
-			server.setStoredUser(storedUser);
-			MyRemote stub = (MyRemote) UnicastRemoteObject.exportObject(server, 0);
-			registry.rebind("MyRemote", stub);
-			MyRemote serverInterface=(MyRemote) registry.lookup("MyRemote");
-			MyRemoteClient client=new MyRemoteClient(serverInterface);
 
 			//set initial stage and view
 			FXMLLoader loader0 = new FXMLLoader();
@@ -146,6 +164,7 @@ public class TestBPListView {
 	}
 	
 	//step 3: clone an new BP
+	//not sure how to select item !
 	private void cloneBP(FxRobot robot, String BPname, int BPyear)
 	{
 		robot.clickOn("#cloneOnlist");
@@ -165,10 +184,10 @@ public class TestBPListView {
 			robot.clickOn("#BPlist");
 			
 			newBP(robot,"VMOSA","newBP",1999);
-			//robot.clickOn("#BPlist");
-
-			//cloneBP(robot,"cloneBP",2000);
-			//robot.clickOn("#BPlist");
+			robot.clickOn("#BPlist");
+			
+			newBP(robot,"VMOSA","peiBP",1999);
+			robot.clickOn("#BPlist");
 			
 			
 			Thread.sleep(1000);

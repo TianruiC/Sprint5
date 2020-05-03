@@ -9,8 +9,8 @@
    <top>
       <ToolBar BorderPane.alignment="CENTER">
         <items>
-          <Button fx:id="clone" mnemonicParsing="false" onAction="#onClickClone" text="Clone" />
-            <Button fx:id="copy" mnemonicParsing="false" onAction="#onClickCopy" text="Copy" />
+          <Button id="cloneOnlist" fx:id="clone" mnemonicParsing="false" onAction="#onClickClone" text="Clone" />
+            <Button id="copyOnlist" fx:id="copy" mnemonicParsing="false" onAction="#onClickCopy" text="Copy" />
         </items>
       </ToolBar>
    </top>

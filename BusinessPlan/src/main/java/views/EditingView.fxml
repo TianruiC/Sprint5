@@ -13,7 +13,7 @@
    <center>
       <VBox prefHeight="869.0" prefWidth="994.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Part: Vision 1">
+            <Label fx:id="sectionName" text="Part: Vision 1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -28,8 +28,8 @@
    <top>
       <ToolBar prefHeight="0.0" prefWidth="784.0" BorderPane.alignment="CENTER">
         <items>
-          <Button mnemonicParsing="false" onAction="#onClickSave" text="Save" />
-            <Button mnemonicParsing="false" onAction="#onClickCancel" text="Cancel" />
+          <Button fx:id="saveEdit" mnemonicParsing="false" onAction="#onClickSave" text="Save" />
+            <Button fx:id="cancelEdit" mnemonicParsing="false" onAction="#onClickCancel" text="Reset" />
         </items>
       </ToolBar>
    </top>

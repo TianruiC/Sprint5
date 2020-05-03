@@ -26,12 +26,15 @@ public class BPTreeController {
     
     public void setModel(BPMainModel newModel) {
     	model = newModel;
+    	
     	Section root = model.client.getCurrentBP().getRoot();
     	String rootContent = root.showContent();
 		TreeItem<String> rootItem = new TreeItem<String>(rootContent);
 		addNodes(root, rootItem);
 		BPTreeView.setShowRoot(true);
 		BPTreeView.setRoot(rootItem);
+		
+		BPNameLabel.textProperty().set(model.client.getCurrentBP().name);
     	
     }
 

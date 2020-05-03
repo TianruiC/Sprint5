@@ -46,6 +46,8 @@ public class BPMainModel {
 		}
 		
 	}
+	
+	//edit specific section
 	public void showEditView(Section cur) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(BPMainModel.class
@@ -101,7 +103,6 @@ public class BPMainModel {
 			stage.show();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}

@@ -49,18 +49,14 @@ public class MainViewModel {
 			
 			BPMainModel model = new BPMainModel(client, view);
 			BPMainController cont = loader.getController();
-			//BPViewTransitionModel bptran = new BPViewTransitionModel(view, model);
+
 			cont.setModel(model);
-			
-			//bptran.showBPtree(model);
-			
-			cont.setDisabled(true);			
+		
 			Stage stage = new Stage();
 			Scene s = new Scene(view);
 			stage.setScene(s);
 			stage.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

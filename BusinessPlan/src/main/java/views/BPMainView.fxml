@@ -18,24 +18,24 @@
         <items>
             <Button fx:id="MainPage" mnemonicParsing="false" onAction="#onClickBack" text="Main Page">
                <tooltip>
-                  <Tooltip text="Go Back To Main Page" />
+                  <Tooltip text="Go Back To the Main Page" />
                </tooltip></Button>
             <Button fx:id="ViewBP" mnemonicParsing="false" onAction="#onClickView" text="View BP">
                <tooltip>
-                  <Tooltip text="View the whole Business Plan" />
+                  <Tooltip text="View the Whole Business Plan" />
                </tooltip>
             </Button>
             <Button fx:id="Edit" mnemonicParsing="false" onAction="#onClickEdit" text="Edit">
                <tooltip>
-                  <Tooltip text="Edit the Business Plan" />
+                  <Tooltip text="Edit the Selected Section" />
                </tooltip></Button>
             <Button fx:id="Delete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickDelete" text="Delete">
                <tooltip>
-                  <Tooltip text="Delete the Current  Part" />
+                  <Tooltip text="Delete the Selected  Section and its Children Sections" />
                </tooltip></Button>
             <Button fx:id="Add" mnemonicParsing="false" onAction="#onClickAdd" text="Add">
                <tooltip>
-                  <Tooltip text="Add New Child Part to the Current Part" />
+                  <Tooltip text="Add New Children Sections to the Selected Section" />
                </tooltip>
             </Button>
         </items>
