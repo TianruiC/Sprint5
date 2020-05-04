@@ -1,4 +1,4 @@
-Things you might need to know:
+Things you might need to know:  
 username:wynnie password:wynnie ---is an admin  
 username:terry password:terry ---is not a admin  
 
