@@ -16,7 +16,6 @@ import org.testfx.framework.junit5.Start;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 import main.Main;
@@ -25,6 +24,7 @@ import models.BusinessPlan;
 import models.MyRemoteClient;
 import models.MyRemoteImpl;
 import models.Person;
+import models.Section;
 import models.VMOSA;
 
 @ExtendWith(ApplicationExtension.class)
@@ -133,12 +133,12 @@ public class TestBPMainView {
 	
 	public void clickTreeView(FxRobot robot)
 	{
-		TreeView outlinetree = (TreeView) scene.lookup("#outlineTree");
+		TreeView<Section> outlinetree = (TreeView<Section>) scene.lookup("#outlineTree");
 		outlinetree.getRoot();
 		System.out.println(outlinetree.getRoot());
 		Assertions.assertThat(outlinetree.getRoot().getValue()).isEqualTo(BP.root);
 		
-		TreeView contenttree = (TreeView) scene.lookup("#contentTree");
+		TreeView<String> contenttree = (TreeView<String>) scene.lookup("#contentTree");
 		contenttree.getRoot();
 		System.out.println(contenttree.getRoot());
 		Assertions.assertThat(contenttree.getRoot().getValue()).isEqualTo(BP.root.showContent());

@@ -1,10 +1,8 @@
 package views;
 import static org.junit.jupiter.api.Assertions.fail;
 import java.rmi.RemoteException;
-import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -24,7 +22,6 @@ import main.Main;
 import models.BusinessPlan;
 import models.MainViewModel;
 import models.MainViewTransitionModel;
-import models.MyRemote;
 import models.MyRemoteClient;
 import models.MyRemoteImpl;
 import models.Person;

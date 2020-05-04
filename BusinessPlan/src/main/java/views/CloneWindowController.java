@@ -37,12 +37,11 @@ public class CloneWindowController {
     void onClickCancel(ActionEvent event) {
     	NewBPName.textProperty().set("");
     	year.textProperty().set("");
+    	Message.setOpacity(0);
 
     }
 
     @FXML
-    //还需改进 小问题 记得回来看看
-    
     void onClickClone(ActionEvent event) {
     	String CloneBPName = NewBPName.getText();
     	String CloneBPyear = year.getText();

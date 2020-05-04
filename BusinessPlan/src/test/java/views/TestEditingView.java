@@ -1,10 +1,8 @@
 package views;
 import static org.junit.jupiter.api.Assertions.fail;
 import java.rmi.RemoteException;
-import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -19,14 +17,10 @@ import org.testfx.framework.junit5.Start;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 import main.Main;
 import models.BPMainModel;
 import models.BusinessPlan;
-import models.MainViewModel;
-import models.MainViewTransitionModel;
-import models.MyRemote;
 import models.MyRemoteClient;
 import models.MyRemoteImpl;
 import models.Person;
