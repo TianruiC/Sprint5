@@ -106,7 +106,7 @@ public class BPMainController {
 			BusinessPlan BP = new BYBPlan();
 			return BP.root;
 		}
-		else if(Type=="CNTRAssssment") {
+		else if(Type=="CNTRAssessment") {
 			BusinessPlan BP = new CNTRAssessment();
 			return BP.root;
 		}

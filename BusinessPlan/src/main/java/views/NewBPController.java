@@ -12,7 +12,7 @@ import models.MainViewModel;
 public class NewBPController {
 	
 	MainViewModel model;
-	ObservableList<String> TypeList=FXCollections.observableArrayList("VMOSA", "CNTRAssssment", "BYBPlan");
+	ObservableList<String> TypeList=FXCollections.observableArrayList("VMOSA", "CNTRAssessment", "BYBPlan");
 	
 	public void setModel(MainViewModel newModel)
 	 {
@@ -58,14 +58,18 @@ public class NewBPController {
         	model.client.getCurrentBP().name=NewBPName;
         	model.client.getCurrentBP().year=NewBPYearInt;
         	String Message=model.client.addBP();
-        	if (Message=="Business Plan already exists.") {
-        		ErrorMes.setText(Message);
-        		ErrorMes.setOpacity(1);
-        	}
-        	else if(Message=="Added new BP to Server") {
-        		ErrorMes.setText(Message);
-        		ErrorMes.setOpacity(1);
-        	}
+        	ErrorMes.setText(Message);
+    		ErrorMes.setOpacity(1);
+//        	if (Message=="Business Plan already exists.") {
+//        		
+//        	}
+//        	else if(Message=="Added new BP to Server") {
+//        		ErrorMes.setText(Message);
+//        		ErrorMes.setOpacity(1);
+//        	}
+//        	else {
+//        		
+//        	}
     	}
 
     }	

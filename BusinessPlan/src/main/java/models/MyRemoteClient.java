@@ -126,7 +126,7 @@ public class MyRemoteClient {
 			currentBP=BP;
 			currentBP.department=loginPerson.department;
 		}
-		else if(Type=="CNTRAssssment") {
+		else if(Type=="CNTRAssessment") {
 			BusinessPlan BP = new CNTRAssessment();
 			currentBP=BP;
 			currentBP.department=loginPerson.department;
@@ -138,8 +138,8 @@ public class MyRemoteClient {
 	
 	//upload BP after create a new BP or revised the old one
     public String uploadBP() {
-    	if(currentBP.year<1819) {
-    		return "Failed. Please use appropriate year attribute.";
+    	if(currentBP.year<1819||currentBP.year>3000) {
+    		return "Please use appropriate year attribute.";
     	}
     	else {
     		try {
@@ -154,8 +154,8 @@ public class MyRemoteClient {
     
 	//add new BP 
     public String addBP() {
-    	if(currentBP.year<1819) {
-    		return "Failed. Please use appropriate year attribute.";
+    	if(currentBP.year<1819||currentBP.year>3000) {
+    		return "Please use appropriate year attribute.";
     	}
     	else {
     		try {
