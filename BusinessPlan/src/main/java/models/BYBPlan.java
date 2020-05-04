@@ -10,6 +10,7 @@ public class BYBPlan extends BusinessPlan
 	public BYBPlan()
 	{
 		this.type="BYBPlan";
+		this.isEditable=true;
 		//MS->Objective->Plan
 		root = new Section("BYB Mission Statement");
 		Section objective = new Section("BYB Objectives");

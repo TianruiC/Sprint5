@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
+import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
@@ -18,8 +19,10 @@ import org.testfx.framework.junit5.Start;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 import main.Main;
+import models.BPMainModel;
 import models.BusinessPlan;
 import models.MainViewModel;
 import models.MainViewTransitionModel;
@@ -30,22 +33,30 @@ import models.Person;
 import models.VMOSA;
 
 @ExtendWith(ApplicationExtension.class)
-public class TestBPListView {
+public class TestEditingView {
 	
 	
 	static MyRemoteImpl server;
 	static MyRemoteClient client;
+	
+	BusinessPlan BP;
+	
+	//counter
+	int clickText = 0;
+	int clickSave = 0;
+	int clickReset = 0;
+	
 	@BeforeAll
-	/* Initialize server and client */
-	static void serverInitialization()
+	//Initialize server and client 
+	static void Initialization()
 	{		
 		try
 		{		
-			Registry registry = LocateRegistry.createRegistry(1099);
+			Registry registry = LocateRegistry.createRegistry(1199);
 
 			server = new MyRemoteImpl();
 			
-			//initialize
+			//initialize storedBP
 			BusinessPlan BP = new VMOSA();
 			BP.name="Giao";
 			BP.year = 2020;
@@ -63,6 +74,7 @@ public class TestBPListView {
 			BP2.department ="CS";
 			BP2.isEditable=true;
 			BP2.addSection(BP2.root);
+			BP2.root.content = "Edit Me Please";
 
 			ArrayList <BusinessPlan> storedBP=new ArrayList<BusinessPlan>();
 			storedBP.add(BP);
@@ -93,102 +105,61 @@ public class TestBPListView {
 	{
 		
 		try {
+			//set login user and current BP
+			client.askForLogin("wynnie", "wynnie");
+			client.askForBP(2009);
+			BusinessPlan bp = client.getCurrentBP();
+			BP = bp;
 
 			//set initial stage and view
-			FXMLLoader loader0 = new FXMLLoader();
-			loader0.setLocation(Main.class.getResource("../views/MainPageShell.fxml")); 
-			
-			BorderPane viewM = loader0.load();
-			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../views/login.fxml")); 
+			loader.setLocation(Main.class.getResource("../views/EditingView.fxml")); 
 			
 			BorderPane view = loader.load();
-
-			MainViewModel model = new MainViewModel(client,view);
-
-			LoginController cont = loader.getController();
-			MainController contM = loader0.getController();
 			
-			MainViewTransitionModel vm =new MainViewTransitionModel(viewM,model); 
-			contM.setModel(vm);
+			BPMainModel model = new BPMainModel(client,view);
+
+			BPEditingController cont = loader.getController();
 			
-		    cont.setModel(model);
-		    cont.setParent(viewM, contM);
+		    cont.setModel(model,BP.root);
 
 			Scene s = new Scene(view);
 			stage.setScene(s);
 			stage.show();
 			
 		}catch(Exception e) {
-			e.printStackTrace();	//print fail
+			e.printStackTrace();	
 			fail("Fail");
 		}
 	}
+
 	
 	//general input text method
-	private void enterText(FxRobot robot, String text, String target)
+	private void enterText(FxRobot robot)
 	{
-		robot.clickOn(target);
-		robot.write(text);
+		robot.clickOn("#text");
+		clickText+=1;
+		robot.write(" haha NO!");
+		robot.clickOn("#save");
+		clickSave+=1;
+		
+		robot.clickOn("#text");
+		clickText+=1;
+		robot.write(" lalalala~");
+		robot.clickOn("#reset");
+		clickReset+=1;
 	}
-	//comboBox
-	private void chooseType(FxRobot robot, String target, String item) 
-	{
-		robot.clickOn(target);
-		robot.clickOn(item);
-	}
-	//int to string
-	private void enterYearText(FxRobot robot, int text, String target)
-	{
-		robot.clickOn(target);
-		robot.write(Integer.toString(text));
-	}
-
-	//step 1: login
-	private void login(FxRobot robot, String username, String password)
-	{
-		enterText(robot, username, "#usernameInput");
-		enterText(robot, password, "#passwordInput");
-		robot.clickOn("#login");
-	}	
-
-	//step 2: create an new BP
-	private void newBP(FxRobot robot, String BPtype, String BPname, int BPyear)
-	{
-		robot.clickOn("#newBP");
-		chooseType(robot, "#BPtypeBox", BPtype);
-		enterText(robot, BPname, "#NameTextField");
-		enterYearText(robot, BPyear, "#YearTextField");
-		robot.clickOn("#createButton");
-	}
-	
-	//step 3: clone an new BP
-	//not sure how to select item !
-	private void cloneBP(FxRobot robot, String BPname, int BPyear)
-	{
-		robot.clickOn("#cloneOnlist");
-		enterText(robot, BPname, "#cloneName");
-		enterYearText(robot, BPyear, "#cloneYear");
-		robot.clickOn("#cloneBP");
-	}
-	
 
 	@Test
-	public void testButton(FxRobot robot) {
+	public void testAll(FxRobot robot) {
 		try {
 			Thread.sleep(1000);
+
+			enterText(robot);
 			
-			//actions
-			login(robot,"wynnie","wynnie");
-			robot.clickOn("#BPlist");
-			
-			newBP(robot,"VMOSA","newBP",1999);
-			robot.clickOn("#BPlist");
-			
-			newBP(robot,"VMOSA","peiBP",1999);
-			robot.clickOn("#BPlist");
-			
+			Assertions.assertThat(clickText).isEqualTo(2);
+			Assertions.assertThat(clickSave).isEqualTo(1);
+			Assertions.assertThat(clickReset).isEqualTo(1);
 			
 			Thread.sleep(1000);
 			

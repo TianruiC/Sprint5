@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="250.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<BorderPane prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.DeleteConfirmationController">
    <top>
       <HBox prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: #ff9999;" BorderPane.alignment="CENTER">
          <children>
@@ -26,13 +25,10 @@
    <center>
       <HBox prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Are You Sure You Want To Delete The Current Part ?">
+            <Label text="Are You Sure You Want To Delete The Selected Part ?">
                <font>
                   <Font size="18.0" />
                </font>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
                <HBox.margin>
                   <Insets left="20.0" top="40.0" />
                </HBox.margin>
@@ -43,7 +39,7 @@
    <bottom>
       <HBox prefHeight="87.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button maxWidth="160.0" mnemonicParsing="false" style="-fx-background-color: #ff9999; -fx-border-color: #737373;" text="YES" textFill="WHITE">
+            <Button fx:id="YesButton" maxWidth="160.0" mnemonicParsing="false" onAction="#onClickYes" style="-fx-background-color: #ff9999; -fx-border-color: #737373;" text="YES" textFill="WHITE">
                <HBox.margin>
                   <Insets left="150.0" />
                </HBox.margin>
@@ -51,7 +47,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button maxWidth="100.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: #737373;" text="NO">
+            <Button fx:id="NoButton" maxWidth="100.0" mnemonicParsing="false" onAction="#onClickNo" style="-fx-background-color: white; -fx-border-color: #737373;" text="NO">
                <HBox.margin>
                   <Insets left="100.0" />
                </HBox.margin>

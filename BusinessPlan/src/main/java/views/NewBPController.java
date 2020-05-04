@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import models.MainViewModel;
 
@@ -28,10 +29,14 @@ public class NewBPController {
     private TextField HappyNewYear;
 
     @FXML
+    private Label ErrorMes;
+    
+    @FXML
     void onClickCancel(ActionEvent event) {
     	NewName.textProperty().set("");
     	HappyNewYear.textProperty().set("");
     	BPtypeBox.setValue("Choose a type");
+    	ErrorMes.setOpacity(0);
     }
 
     @FXML
@@ -52,9 +57,15 @@ public class NewBPController {
     		model.client.newBP(NewBPtype);
         	model.client.getCurrentBP().name=NewBPName;
         	model.client.getCurrentBP().year=NewBPYearInt;
-        	System.out.println("Tried to add newBP"+NewBPtype +"with name:"+NewBPName+"in year:"+NewBPYearInt);
-        	System.out.println("client: Tried to add newBP"+NewBPtype +"with name:"+model.client.getCurrentBP().name+"in year:"+model.client.getCurrentBP().year);
-        	model.client.uploadBP();
+        	String Message=model.client.addBP();
+        	if (Message=="Business Plan already exists.") {
+        		ErrorMes.setText(Message);
+        		ErrorMes.setOpacity(1);
+        	}
+        	else if(Message=="Added new BP to Server") {
+        		ErrorMes.setText(Message);
+        		ErrorMes.setOpacity(1);
+        	}
     	}
 
     }	

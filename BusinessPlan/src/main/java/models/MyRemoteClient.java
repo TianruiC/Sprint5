@@ -98,13 +98,7 @@ public class MyRemoteClient {
 			System.err.println("Client exception: " + e.toString());
 	        e.printStackTrace();
 		}
-    	//hint
-    	BusinessPlan BP= new VMOSA();
-    	BP.name = "find nothing";
-    	ArrayList<BusinessPlan> empty = new ArrayList<BusinessPlan>();
-    	empty.add(BP);
-    	
-    	return empty;
+    	return null;
     }
     public void askForBP(int year){
     	try {
@@ -143,19 +137,37 @@ public class MyRemoteClient {
 	}
 	
 	//upload BP after create a new BP or revised the old one
-    public void uploadBP() {
+    public String uploadBP() {
     	if(currentBP.year<1819) {
-    		System.out.println("Failed. Please use appropriate year attribute.");
+    		return "Failed. Please use appropriate year attribute.";
     	}
     	else {
     		try {
     			String Message=server.addBP(currentBP);	
-    			System.out.println("Response: " + Message);
+    			return Message;
     		}catch (RemoteException e) {
     			e.printStackTrace();
     		}
     	}
+    	return null;
     }
+    
+	//add new BP 
+    public String addBP() {
+    	if(currentBP.year<1819) {
+    		return "Failed. Please use appropriate year attribute.";
+    	}
+    	else {
+    		try {
+    			String Message=server.addNewBP(currentBP);	
+    			return Message;
+    		}catch (RemoteException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	return null;
+    }
+
 
 }
     

@@ -2,10 +2,8 @@ package main;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeAll;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +13,6 @@ import javafx.stage.Stage;
 import models.BusinessPlan;
 import models.MainViewModel;
 import models.MainViewTransitionModel;
-import models.MyRemote;
 import models.MyRemoteClient;
 import models.MyRemoteImpl;
 import models.Person;
@@ -100,6 +97,7 @@ public class Main extends Application {
 
 		Scene s = new Scene(view);
 		stage.setScene(s);
+		stage.setTitle("BPViewer");
 		stage.show();
 		
 	}

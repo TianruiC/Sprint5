@@ -1,20 +1,16 @@
 package views;
 
-import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import main.Main;
 import models.ViewTransitionModelInterface;
 
 public class MainController {
 	
 	ViewTransitionModelInterface model;
+	
 
 	  
     public void setModel(ViewTransitionModelInterface newModel)
@@ -47,7 +43,7 @@ public class MainController {
 
     @FXML
     void onClickSavedBPs(ActionEvent event) {
-    	model.showBPlistView();
+    	model.showBPlistView(model);
     }   
     @FXML
     void onClickLogout(ActionEvent event) {

@@ -5,10 +5,8 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import views.BPMainController;
-import views.BPTreeController;
 import views.CloneWindowController;
 
 public class MainViewModel {
@@ -21,18 +19,22 @@ public class MainViewModel {
 		this.mainview=view;
 	}
 
-	public void showCloneView() {
+	public void showCloneView(ViewTransitionModelInterface vm) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MainViewModel.class
 				.getResource("../views/CloneWindow.fxml"));
 		try {
-			Pane view = loader.load();
-			mainview.setCenter(view);
+			BorderPane view = loader.load();
 			CloneWindowController cont = loader.getController();
-			cont.setModel(this);
+			cont.setModel(this,vm);
 
+			Stage stage = new Stage();
+			Scene s = new Scene(view);
+			stage.setScene(s);
+			stage.setTitle("Clone Page");
+			stage.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("erroe");
 			e.printStackTrace();
 		}
 
@@ -55,6 +57,7 @@ public class MainViewModel {
 			Stage stage = new Stage();
 			Scene s = new Scene(view);
 			stage.setScene(s);
+			stage.setTitle("BPViewer");
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();

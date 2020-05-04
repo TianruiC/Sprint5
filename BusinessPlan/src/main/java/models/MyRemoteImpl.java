@@ -1,6 +1,7 @@
 package models;
 
 import java.rmi.registry.Registry;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -153,10 +154,12 @@ public class MyRemoteImpl implements MyRemote {
     		System.out.println(Message);
     		return Message;
     	}
+    	System.out.println(storedBP);
     	for (int i=0; i<storedBP.size();i++){
     		BusinessPlan current=storedBP.get(i);
 
     		if((current.department.equals(BP.department))&&(current.year==BP.year)){
+    			//Message=("Business Plan already exists.");
     			System.out.println("Business Plan already exists.");
     			if(current.isEditable==false) {
     				Message="This BusinessPlan is not Editable";
@@ -176,6 +179,29 @@ public class MyRemoteImpl implements MyRemote {
     	System.out.println(Message);
     	return Message;
     }
+    
+    @Override
+	public String addNewBP(BusinessPlan BP) throws RemoteException {
+    	String Message="";
+    	if(loginPerson==null) {
+    		Message="PLEASE LOGIN FIRST.";
+    		System.out.println(Message);
+    		return Message;
+    	}
+    	for (int i=0; i<storedBP.size();i++){
+    		BusinessPlan current=storedBP.get(i);
+    		if((current.department.equals(BP.department))&&(current.year==BP.year)){
+    			Message=("Business Plan already exists.");
+    			System.out.println(Message);
+    			return Message;
+    		}
+    	}
+    	storedBP.add(BP);
+    	System.out.println("Business does not exist.");
+    	Message="Added new BP to Server";
+    	System.out.println(Message);
+    	return Message;
+	}
     
     //save all data to the disk every two minutes 
   	//timeInterval should be set to 1000*120 when call the function
@@ -277,4 +303,5 @@ public class MyRemoteImpl implements MyRemote {
             e.printStackTrace();
         }
     }
+
 }

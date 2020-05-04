@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import models.BPMainModel;
@@ -35,19 +34,24 @@ public class BPEditingController {
 
 	@FXML
 	private Button cancelEdit;
+	
+	@FXML
+    private Label savedMessge;
 
 	@FXML
 	void onClickCancel(ActionEvent event) {
 		//reset the content (show original version)
 		ContentTextArea.textProperty().set(current.content);
+		savedMessge.setOpacity(0);
 	}
 
 	@FXML
 	void onClickSave(ActionEvent event) throws RemoteException {
-		System.out.println(model.client.getCurrentBP());
+		//System.out.println(model.client.getCurrentBP());
 		String changed = ContentTextArea.getText();
 		current.setContent(changed);
 		model.client.uploadBP();
+		savedMessge.setOpacity(1);
 
 	}
 

@@ -27,8 +27,6 @@ public abstract class BusinessPlan implements Serializable
 	@Override
 	public String toString() {
 		return name+" ("+year+")";
-//		//return "BusinessPlan [root=" + root + ", department=" + department + ", year=" + year + ", isEditable="
-//				+ isEditable + "]";
 	}
 
 	public abstract void addSection(Section parent);// the only abstract method

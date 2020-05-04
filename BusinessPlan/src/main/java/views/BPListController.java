@@ -10,17 +10,18 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import models.BusinessPlan;
 import models.MainViewModel;
-import models.MainViewTransitionModel;
 import models.ViewTransitionModelInterface;
 
 public class BPListController {
 
 	MainViewModel model; 
+	ViewTransitionModelInterface supermodel;
 	public ObservableList<BusinessPlan> BPList= FXCollections.observableArrayList();
 	
-    public void setModel(MainViewModel newModel)
+    public void setModel(MainViewModel newModel,ViewTransitionModelInterface vm)
     {
       model=newModel;
+      supermodel=vm;
       ArrayList<BusinessPlan> Dulplicate=model.client.askForAllBP();
 		for (int i=0; i<Dulplicate.size();i++){
 			BPList.add(Dulplicate.get(i));
@@ -43,10 +44,10 @@ public class BPListController {
     @FXML
     void onClickClone(ActionEvent event) {
     	BusinessPlan clickedBP=BPListView.getSelectionModel().getSelectedItem();
-    	System.out.println("Clone Clicked on " + clickedBP);
+    	//System.out.println("Clone Clicked on " + clickedBP);
     	if(clickedBP!=null) {
     		model.client.askForBP(clickedBP.year);
-            model.showCloneView();
+            model.showCloneView(supermodel);
     	}
     }
     
@@ -54,12 +55,12 @@ public class BPListController {
     @FXML
     void onClickCopy(ActionEvent event) {
     	BusinessPlan clickedBP=BPListView.getSelectionModel().getSelectedItem();
-    	System.out.println("Copy Clicked on " + clickedBP);
+    	//System.out.println("Copy Clicked on " + clickedBP);
     	
     	if(clickedBP!=null) {
     		//set selected BP to currentBP
     		model.client.askForBP(clickedBP.year);
-    		System.out.println(model.client.getCurrentBP());
+    		//System.out.println(model.client.getCurrentBP());
     		//close current BPList window
     		Stage stage = (Stage) copy.getScene().getWindow();
     		stage.close();

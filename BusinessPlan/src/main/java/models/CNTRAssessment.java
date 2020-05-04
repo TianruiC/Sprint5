@@ -9,6 +9,7 @@ public class CNTRAssessment extends BusinessPlan
 	public CNTRAssessment()
 	{
 		this.type="CNTRAssessment";
+		this.isEditable=true;
 		root = new Section("Centre College Institutional Mission Statement");
 		Section objective = new Section("Program Goals and Student Learning Objective");
 		Section progMission = new Section("Program Mission Statement");

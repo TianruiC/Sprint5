@@ -21,15 +21,20 @@
                   <Insets left="8.0" />
                </VBox.margin>
             </Label>
-            <TextArea fx:id="ContentTextArea" prefHeight="703.0" prefWidth="728.0" text="Come to edit me please !!!" />
+            <TextArea id="text" fx:id="ContentTextArea" prefHeight="703.0" prefWidth="728.0" text="Come to edit me please !!!" />
          </children>
       </VBox>
    </center>
    <top>
       <ToolBar prefHeight="0.0" prefWidth="784.0" BorderPane.alignment="CENTER">
         <items>
-          <Button fx:id="saveEdit" mnemonicParsing="false" onAction="#onClickSave" text="Save" />
-            <Button fx:id="cancelEdit" mnemonicParsing="false" onAction="#onClickCancel" text="Reset" />
+          <Button id="save" fx:id="saveEdit" mnemonicParsing="false" onAction="#onClickSave" text="Save" />
+            <Button id="reset" fx:id="cancelEdit" mnemonicParsing="false" onAction="#onClickCancel" text="Reset" />
+            <Label fx:id="savedMessge" style="-fx-opacity: 0;" text="Successfully Saved!">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
         </items>
       </ToolBar>
    </top>

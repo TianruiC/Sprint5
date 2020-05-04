@@ -10,6 +10,7 @@ public class VMOSA extends BusinessPlan implements Serializable
 	public VMOSA()
 	{
 		this.type="VMOSA";
+		this.isEditable=true;
 		// create a complete tree
 		root = new Section("Vision");
 		Section strategy = new Section("Strategy");

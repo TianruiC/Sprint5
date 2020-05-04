@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.NewBPController">
@@ -84,18 +85,28 @@
       </GridPane>
    </center>
    <bottom>
-      <HBox prefHeight="75.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button id="createButton" mnemonicParsing="false" onAction="#onClickCreate" text="Create">
-               <HBox.margin>
-                  <Insets left="70.0" top="20.0" />
-               </HBox.margin>
-            </Button>
-            <Button id="cancelButton" mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
-               <HBox.margin>
-                  <Insets left="40.0" top="20.0" />
-               </HBox.margin>
-            </Button>
-         </children></HBox>
+            <Label fx:id="ErrorMes">
+               <VBox.margin>
+                  <Insets left="85.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="75.0" prefWidth="300.0">
+               <children>
+                  <Button id="createButton" mnemonicParsing="false" onAction="#onClickCreate" text="Create">
+                     <HBox.margin>
+                        <Insets left="70.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button id="cancelButton" mnemonicParsing="false" onAction="#onClickCancel" text="Cancel">
+                     <HBox.margin>
+                        <Insets left="40.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </bottom>
 </BorderPane>

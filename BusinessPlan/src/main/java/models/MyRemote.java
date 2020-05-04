@@ -10,6 +10,7 @@ public interface MyRemote extends Remote {
     public Person verifyLoginPerson(String username, String password) throws RemoteException;
     public ArrayList<Person> getStoredUser() throws RemoteException;
     public String addBP(BusinessPlan BP) throws RemoteException;
+    public String addNewBP(BusinessPlan BP) throws RemoteException;
     public BusinessPlan findBP(int year) throws RemoteException;
     public void changeEditable(int year, boolean bool) throws RemoteException;
     public void addPerson(String username, String password, String department, Boolean isAdmin)throws RemoteException;

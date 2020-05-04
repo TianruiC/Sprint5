@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import views.BPEditingController;
 import views.BPMainController;
 import views.BPTreeController;
+import views.DeleteConfirmationController;
 import views.LeaveController;
 import views.MainController;
 
@@ -40,6 +41,7 @@ public class BPMainModel {
 			Stage stage = new Stage();
 			Scene s = new Scene(view);
 			stage.setScene(s);
+			stage.setTitle("BPViewer");
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -100,13 +102,35 @@ public class BPMainModel {
 			Stage stage = new Stage();
 			Scene s = new Scene(view);
 			stage.setScene(s);
+			stage.setTitle("Leave Confirmtion");
 			stage.show();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 
-		}
+		}	
+	}
+	public void showDeleteConfirm(BPMainController controller,Section clickedSection) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainViewModel.class
+				.getResource("../views/ConfirmationView.fxml"));
+		try {
+			BorderPane view = loader.load();
 
+			BPMainModel model = new BPMainModel(client, view);
+			DeleteConfirmationController cont = loader.getController();
+
+			cont.setModel(model,controller,clickedSection);
 		
+			Stage stage = new Stage();
+			Scene s = new Scene(view);
+			stage.setScene(s);
+			stage.setTitle("Delete Confirmation");
+			stage.show();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}	
 	}
 }

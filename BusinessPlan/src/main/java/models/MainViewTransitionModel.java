@@ -47,7 +47,7 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 	}
 
 	@Override
-	public void showBPlistView() {
+	public void showBPlistView(ViewTransitionModelInterface vm) {
 		FXMLLoader loader = new FXMLLoader();
 	    loader.setLocation(MainViewTransitionModel.class
 	        .getResource("../views/BPListView.fxml"));
@@ -55,7 +55,7 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 	      Node view = loader.load();
 	      mainview.setCenter(view);
 	      BPListController cont = loader.getController();
-	      cont.setModel(model);
+	      cont.setModel(model,vm);
 	      System.out.println(cont.BPList);
 	      
 	    } catch (IOException e) {
@@ -118,6 +118,7 @@ public class MainViewTransitionModel implements ViewTransitionModelInterface {
 			Stage stage = new Stage();
 			Scene s = new Scene(view);
 			stage.setScene(s);
+			stage.setTitle("BPViewer");
 			stage.show();
 
 		}catch (IOException e) {

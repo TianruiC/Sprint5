@@ -81,6 +81,7 @@ public class Section implements Serializable
 	public void addChild(Section child)
 	{
 		children.add(child);
+		child.parent=this;
 	}
 
 	// remove child from the array list

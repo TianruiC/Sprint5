@@ -3,12 +3,20 @@ package views;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 import models.BPMainModel;
+import models.BYBPlan;
+import models.BusinessPlan;
+import models.CNTRAssessment;
 import models.Section;
+import models.VMOSA;
 
 
 public class BPMainController {
@@ -73,7 +81,39 @@ public class BPMainController {
 			addStringNodes(child, node);
 		}
 	}
-
+	
+	public void showOutlineTree(Section root){
+		TreeItem<Section> rootItem = new TreeItem<Section>(root);
+		addNodes(root, rootItem);
+		outlineTree.setShowRoot(true);
+		outlineTree.setRoot(rootItem);
+	}
+	
+	private void showContentTree(Section root) {
+		String rootContent = root.showContent();
+		TreeItem<String> rootItem2 = new TreeItem<String>(rootContent);
+		addStringNodes(root, rootItem2);
+		contentTree.setShowRoot(true);
+		contentTree.setRoot(rootItem2);
+	}
+	
+	private Section newAddBP(String Type) {
+		if(Type=="VMOSA") {
+			BusinessPlan BP = new VMOSA();
+			return BP.root;
+		}
+		else if(Type=="BYBPlan"){
+			BusinessPlan BP = new BYBPlan();
+			return BP.root;
+		}
+		else if(Type=="CNTRAssssment") {
+			BusinessPlan BP = new CNTRAssessment();
+			return BP.root;
+		}
+		else {
+			return null;
+		}
+	}
 	public void setModel(BPMainModel newmodel) {
 		model = newmodel;
 		Section root = model.client.getCurrentBP().getRoot();
@@ -95,16 +135,9 @@ public class BPMainController {
 	    }
 		
 		//set tree views
-		TreeItem<Section> rootItem = new TreeItem<Section>(root);
-		addNodes(root, rootItem);
-		outlineTree.setShowRoot(true);
-		outlineTree.setRoot(rootItem);
-		
-    	String rootContent = root.showContent();
-		TreeItem<String> rootItem2 = new TreeItem<String>(rootContent);
-		addStringNodes(root, rootItem2);
-		contentTree.setShowRoot(true);
-		contentTree.setRoot(rootItem2);
+		showOutlineTree(root);
+		showContentTree(root);
+    	
 	}
 	
     @FXML
@@ -117,24 +150,56 @@ public class BPMainController {
     	model.showLeaveConfirm(stage);
 
     }
-    
+    private Section findCorrespondingChild(Section selectedroot, Section searchingroot) {
+    	if(searchingroot.children.size()!=0) {
+    		if(selectedroot.name.equals(searchingroot.name)) {
+        		return searchingroot.children.get(0);
+        	}
+        	else {
+        		return findCorrespondingChild(selectedroot, searchingroot.children.get(0));
+        	}
+    	}
+    	else {
+    		return null;
+    	}
+    }
     @FXML
-    void onClickAdd(ActionEvent event) {
- 
+    void onClickAdd(ActionEvent event) throws IOException {
+    	TreeItem<Section> SelectedItem=outlineTree.getSelectionModel().getSelectedItem();
+		Section root=model.client.getCurrentBP().root;
+		//since root can't be deleted or added.
+		ArrayList<String> lastSection=new ArrayList<String>();
+		lastSection.add("Action Plan");
+		lastSection.add("BYB Plan");
+		lastSection.add("Program Goals and Student Learning Objective");
+		if(SelectedItem!=null&&(lastSection.contains(SelectedItem.getValue().name)!=true)) {
+			Section newChildroot=newAddBP(model.client.getCurrentBP().type);
+			Section child=findCorrespondingChild(SelectedItem.getValue(),newChildroot);
+			SelectedItem.getValue().addChild(child);
+			model.client.uploadBP();
+			model.showTreeView();
+			showOutlineTree(root);}
     }
 
     @FXML
     void onClickDelete(ActionEvent event) {
-
+    	TreeItem<Section> SelectedItem=outlineTree.getSelectionModel().getSelectedItem();
+    	Section root=model.client.getCurrentBP().root;
+    	//since root can't be deleted or added.
+    	if(SelectedItem!=null&&SelectedItem.getValue()!=root) {
+    		Stage stage = (Stage) MainPage.getScene().getWindow();
+            currentStage = stage;
+        	
+        	//show Leave Confirmation window
+        	model.showDeleteConfirm(this,SelectedItem.getValue());
+        }
     }
 
     @FXML
     void onClickEdit(ActionEvent event) {
-    	Section clickedSection=outlineTree.getSelectionModel().getSelectedItem().getValue();
-    	
-    	System.out.println(clickedSection);
-    	if(clickedSection!=null) {
-    		model.showEditView(clickedSection);
+    	TreeItem<Section> SelectedItem=outlineTree.getSelectionModel().getSelectedItem();
+    	if(SelectedItem!=null) {
+    		model.showEditView(SelectedItem.getValue());
         }
     	
     }

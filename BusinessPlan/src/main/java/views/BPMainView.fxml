@@ -16,24 +16,24 @@
    <top>
       <ToolBar BorderPane.alignment="CENTER">
         <items>
-            <Button fx:id="MainPage" mnemonicParsing="false" onAction="#onClickBack" text="Main Page">
+            <Button id="mainPage" fx:id="MainPage" mnemonicParsing="false" onAction="#onClickBack" text="Main Page">
                <tooltip>
                   <Tooltip text="Go Back To the Main Page" />
                </tooltip></Button>
-            <Button fx:id="ViewBP" mnemonicParsing="false" onAction="#onClickView" text="View BP">
+            <Button id="ViewBP" fx:id="ViewBP" mnemonicParsing="false" onAction="#onClickView" text="View BP">
                <tooltip>
                   <Tooltip text="View the Whole Business Plan" />
                </tooltip>
             </Button>
-            <Button fx:id="Edit" mnemonicParsing="false" onAction="#onClickEdit" text="Edit">
+            <Button id="Edit" fx:id="Edit" mnemonicParsing="false" onAction="#onClickEdit" text="Edit">
                <tooltip>
                   <Tooltip text="Edit the Selected Section" />
                </tooltip></Button>
-            <Button fx:id="Delete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickDelete" text="Delete">
+            <Button id="Delete" fx:id="Delete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickDelete" text="Delete">
                <tooltip>
                   <Tooltip text="Delete the Selected  Section and its Children Sections" />
                </tooltip></Button>
-            <Button fx:id="Add" mnemonicParsing="false" onAction="#onClickAdd" text="Add">
+            <Button id="Add" fx:id="Add" mnemonicParsing="false" onAction="#onClickAdd" text="Add">
                <tooltip>
                   <Tooltip text="Add New Children Sections to the Selected Section" />
                </tooltip>
@@ -94,7 +94,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="BPdep" text="Computer Science">
+                  <Label id="BPdep" fx:id="BPdep" text="Computer Science">
                      <VBox.margin>
                         <Insets left="80.0" top="8.0" />
                      </VBox.margin>
@@ -138,13 +138,13 @@
             </VBox>
             <HBox prefHeight="200.0" prefWidth="250.0">
                <children>
-                  <TreeView fx:id="outlineTree" prefHeight="200.0" prefWidth="250.0" />
+                  <TreeView id="outlineTree" fx:id="outlineTree" prefHeight="200.0" prefWidth="250.0" />
                </children>
             </HBox>
          </items>
       </SplitPane>
    </left>
    <center>
-      <TreeView fx:id="contentTree" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TreeView id="contentTree" fx:id="contentTree" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
