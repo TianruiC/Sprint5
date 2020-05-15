@@ -327,8 +327,8 @@ public class MyRemoteImpl implements MyRemote {
     	else if(diffsize<0) {
     		compareSize=section1.getChildren().size();
     		for(int i=0; i>diffsize;i--) {
-    			diffSec.get(1).add(section1.getChildren().get(compareSize-i).showContent());
-    			getDiffChild(section2.getChildren().get(i+compareSize),diffSec.get(1));
+    			diffSec.get(1).add(section2.getChildren().get(compareSize-i).showContent());
+    			getDiffChild(section2.getChildren().get(compareSize-i),diffSec.get(1));
     		}
     	}
     	//the same size
