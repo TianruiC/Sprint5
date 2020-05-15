@@ -21,7 +21,7 @@
                   <Insets left="8.0" />
                </VBox.margin>
             </Label>
-            <TextArea id="text" fx:id="ContentTextArea" prefHeight="703.0" prefWidth="728.0" text="Come to edit me please !!!" />
+            <TextArea id="text" fx:id="ContentTextArea" text="Come to edit me please !!!" />
          </children>
       </VBox>
    </center>

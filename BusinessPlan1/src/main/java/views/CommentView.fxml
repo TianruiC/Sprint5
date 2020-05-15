@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <Button mnemonicParsing="false" text="Add" />
+          <Button mnemonicParsing="false" text="Delete" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <Label text="All Comment" BorderPane.alignment="CENTER" />
+               </top>
+               <center>
+                  <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <Label text="New Comment" BorderPane.alignment="CENTER" />
+               </top>
+               <center>
+                  <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
