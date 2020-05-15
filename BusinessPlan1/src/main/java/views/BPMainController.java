@@ -207,6 +207,23 @@ public class BPMainController {
     void onClickView(ActionEvent event) {
     	model.showTreeView();
     }
+    @FXML
+    void onClickCompareBP(ActionEvent event) {
+    	//save the current working BPMain window
+    	Stage stage = (Stage) MainPage.getScene().getWindow();
+        currentStage = stage;
+        model.showCompareBP(stage);
+    }
+    @FXML
+    void onClickViewSection(ActionEvent event) {
+    	TreeItem<Section> SelectedItem=outlineTree.getSelectionModel().getSelectedItem();
+    	//save the current working BPMain window
+//    	Stage stage = (Stage) MainPage.getScene().getWindow();
+//        currentStage = stage;
+    	if(SelectedItem!=null) {
+    		 model.showComment(SelectedItem.getValue());
+        }
+    }
 
 }
 

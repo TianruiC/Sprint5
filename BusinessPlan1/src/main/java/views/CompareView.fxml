@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CompareViewController">
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Compare">
+          <Button id="PopCompare" fx:id="compare" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onClickCompare" text="Compare">
                <tooltip>
                   <Tooltip text="Click to see the difference with the selected BP " />
                </tooltip>
@@ -21,7 +21,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button mnemonicParsing="false" text="Cancel" />
+            <Button id="PopCancel" fx:id="cancel" mnemonicParsing="false" onAction="#onClickCancel" text="Cancel" />
         </items>
       </ToolBar>
    </top>
@@ -35,7 +35,7 @@
             </Label>
          </top>
          <center>
-            <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="BPListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </center>

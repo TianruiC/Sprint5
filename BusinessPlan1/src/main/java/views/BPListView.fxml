@@ -15,6 +15,6 @@
       </ToolBar>
    </top>
    <center>
-      <ListView fx:id="BPListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ListView id="BPList" fx:id="BPListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

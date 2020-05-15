@@ -16,4 +16,5 @@ public interface MyRemote extends Remote {
     public void addPerson(String username, String password, String department, Boolean isAdmin)throws RemoteException;
     public void logOut() throws RemoteException;
     public ArrayList<BusinessPlan> findDepAllBP() throws RemoteException;
+    public ArrayList<ArrayList<String>> compareBP(BusinessPlan BP1, BusinessPlan BP2) throws RemoteException;
 }

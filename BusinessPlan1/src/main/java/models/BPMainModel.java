@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import views.BPEditingController;
 import views.BPMainController;
 import views.BPTreeController;
+import views.CommentController;
+import views.CompareDetailedController;
+import views.CompareViewController;
 import views.DeleteConfirmationController;
 import views.LeaveController;
 import views.MainController;
@@ -133,4 +136,60 @@ public class BPMainModel {
 
 		}	
 	}
+	
+	//task1
+	public void showCompareBP(Stage stageP) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(BPMainModel.class
+				.getResource("../views/CompareView.fxml"));
+		try {
+			BorderPane view = loader.load();
+			CompareViewController cont = loader.getController();
+
+			cont.setModel(this,stageP);
+		
+			Stage stage = new Stage();
+			Scene s = new Scene(view);
+			stage.setScene(s);
+			stage.setTitle("Stored BP");
+			stage.show();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	public void showCompareDetailed(BusinessPlan clickedBP) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(BPMainModel.class
+				.getResource("../views/CompareDetailedView.fxml"));
+		try {
+			Pane view = loader.load();
+			CompareDetailedController cont = loader.getController();
+			mainview.setCenter(view);
+			cont.setModel(this,clickedBP);
+		}	
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	//task2
+	public void showComment(Section cur) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(BPMainModel.class
+				.getResource("../views/CommentView.fxml"));
+		try {
+			BorderPane view = loader.load();
+			CommentController cont = loader.getController();
+			mainview.setCenter(view);
+			cont.setModel(this, cur);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	
 }

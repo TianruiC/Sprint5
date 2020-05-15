@@ -25,12 +25,12 @@
                   <Tooltip text="View the Whole Business Plan" />
                </tooltip>
             </Button>
-            <Button mnemonicParsing="false" text="View Section">
+            <Button id="ViewSection" fx:id="ViewSection" mnemonicParsing="false" onAction="#onClickViewSection" text="View Section">
                <tooltip>
                   <Tooltip text="See the comments of a specific section" />
                </tooltip>
             </Button>
-            <Button mnemonicParsing="false" text="Compare BP">
+            <Button id="CompareBP" fx:id="CompareBP" mnemonicParsing="false" onAction="#onClickCompareBP" text="Compare BP">
                <tooltip>
                   <Tooltip text="Compare with another Business Plan to see the differences" />
                </tooltip>

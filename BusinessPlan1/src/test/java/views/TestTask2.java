@@ -6,7 +6,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,9 +13,9 @@ import org.testfx.api.FxRobot;
 import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import main.Main;
@@ -27,10 +26,11 @@ import models.MainViewTransitionModel;
 import models.MyRemoteClient;
 import models.MyRemoteImpl;
 import models.Person;
+import models.Section;
 import models.VMOSA;
 
 @ExtendWith(ApplicationExtension.class)
-public class TestTask1 {
+public class TestTask2 {
 	
 	static MyRemoteImpl server;
 	static MyRemoteClient client;
@@ -176,43 +176,106 @@ public class TestTask1 {
 		robot.clickOn("#copyOnlist");
 	}
 	
-	private void compareBP(FxRobot robot, String BPName)
-	{
-		robot.clickOn("#CompareBP");
-		robot.clickOn(BPName);
-		robot.clickOn("#PopCompare");
+	private void selectSection(FxRobot robot, String name) {
+		robot.clickOn(name);
 	}
+	
+	private void selectComment(FxRobot robot, String name) {
+		robot.clickOn(name);
+	}
+	
+	private void viewComment(FxRobot robot, String name) {
+		selectSection(robot,name);
+		robot.clickOn("#ViewSection");
+	}
+	
+	private void addComment(FxRobot robot, String content) {
+		enterText(robot,content, "#newComment");
+		robot.clickOn("#AddButton");
+	}
+	//person.username+":\n"+content
+	private void deleteComment(FxRobot robot, String CommentString) {
+		selectComment(robot,CommentString);
+		robot.clickOn("#DeleteButton");
+	}
+	
+	//use hasExactlyNumItems and hasListCell to check whether or not the comment has been updated
+	private void checkCommentList(FxRobot robot, Section sec) {
+		
+		@SuppressWarnings("unchecked")
+		ListView<Comment> getComments = (ListView<Comment>) robot.lookup("#AllComment").queryAll().iterator().next();
+		
+		Assertions.assertThat(getComments).hasExactlyNumItems(sec.comments.size());
 
+		for(Comment i: sec.comments) {
+			Assertions.assertThat(getComments).hasListCell(i); 
+		}		
+	}
+	
 	@Test
-	public void testAll(FxRobot robot) {
+	public void testALLTask2(FxRobot robot) {
 		try {
 			Thread.sleep(1000);
-			
+
 			//login and go to giao's main page
 			login(robot,"wynnie","wynnie");
 			goBPMainPage(robot,"Giao (2020)");
-			//compare with itself
-			//should no *** appear
-			compareBP(robot,"Giao (2020)");
-			Thread.sleep(1000);
-			//compare with different BP
-			//expect several ***
-			compareBP(robot,"Hoaho (2009)");
-			Thread.sleep(1000);
 			
-			//go back to main
+			//view comment in Vision
+			viewComment(robot,"Vision");
+			addComment(robot,"Giao");
+			
+			//check Vision
+			Section checkSec=client.getCurrentBP().getRoot();
+			checkCommentList(robot,checkSec);
+			
+			//delete the original one
+			deleteComment(robot,"terry"+":\n"+"Nice job");
+			//check
+			checkSec=client.getCurrentBP().getRoot();
+			checkCommentList(robot,checkSec);
+			
+			//back to MainPage
+			robot.clickOn("#mainPage");
+			robot.clickOn("#leaveYes");
+			//go to giao's main page to check the change has been stored
+			goBPMainPage(robot,"Giao (2020)");
+			viewComment(robot,"Vision");
+			
+			//check
+			checkSec=client.getCurrentBP().getRoot();
+			checkCommentList(robot,checkSec);
+			
+			//back to MainPage
 			robot.clickOn("#mainPage");
 			robot.clickOn("#leaveYes");
 			
-			//clone a new Hoaho BP
+			//clone a Giao to see the comment can be clone or not
 			robot.clickOn("#BPlist");
-			cloneBP(robot, "Hoaho (2009)", "New Hoaho", 2021);
-			goBPMainPage(robot,"New Hoaho (2021)");
-			//should no *** occur
-			compareBP(robot,"Hoaho (2009)");
+			cloneBP(robot, "Giao (2020)", "New Giao", 2021);
+			goBPMainPage(robot,"New Giao (2021)");
+			viewComment(robot,"Vision");
+			
+			//check the Comments are the same for cloned BP and original one
+			Section checkSec2=client.getCurrentBP().getRoot();
+			checkCommentList(robot,checkSec2);
+			checkCommentList(robot,checkSec);
+			
+			//logout and login as terry to check the updated comment
+			robot.clickOn("#mainPage");
+			robot.clickOn("#leaveYes");
+			robot.clickOn("#logout");
+			login(robot,"terry","terry");
+			goBPMainPage(robot,"Giao (2020)");
+			viewComment(robot,"Vision");
+			
+			//check the Comment is the same for both user
+			Section checkSec3=client.getCurrentBP().getRoot();
+			checkCommentList(robot,checkSec3);
+			checkCommentList(robot,checkSec);
+			
 			Thread.sleep(1000);
-			
-			
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

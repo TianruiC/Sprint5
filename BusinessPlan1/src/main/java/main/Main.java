@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import models.BusinessPlan;
+import models.Comment;
 import models.MainViewModel;
 import models.MainViewTransitionModel;
 import models.MyRemoteClient;
@@ -42,7 +43,14 @@ public class Main extends Application {
 			BP.addSection(BP.root);
 			BP.root.content=("this is the vision");
 			BP.root.children.get(0).content=("this is the misson");
+			BP.root.children.get(0).children.get(0).content=("this is the objective1");
+			BP.root.children.get(0).children.get(0).children.get(0).content=("this is the strategy1");
+			BP.root.children.get(0).children.get(0).children.get(0).children.get(0).content=("this is the actionplan1");
 			BP.addSection(BP.root.children.get(0));
+			BP.root.children.get(1).content=("extra misson");
+			BP.root.children.get(1).children.get(0).content=("extra objective");
+			BP.root.children.get(1).children.get(0).children.get(0).content=("extra strategy");
+			BP.root.children.get(1).children.get(0).children.get(0).children.get(0).content=("extra actionplan");
 
 			BusinessPlan BP2 = new VMOSA();
 			BP2.name="Hoaho";
@@ -50,6 +58,10 @@ public class Main extends Application {
 			BP2.department ="CS";
 			BP2.isEditable=true;
 			BP2.addSection(BP2.root);
+			BP2.root.children.get(0).content=("this is the misson");
+			BP2.root.children.get(0).children.get(0).content=("this is the objective1");
+			BP2.root.children.get(0).children.get(0).children.get(0).content=("this is the strategy1");
+			BP2.root.children.get(0).children.get(0).children.get(0).children.get(0).content=("this is the actionplan1");
 
 			ArrayList <BusinessPlan> storedBP=new ArrayList<BusinessPlan>();
 			storedBP.add(BP);
@@ -58,7 +70,10 @@ public class Main extends Application {
 			//initialize storedUser
 			Person wynnie=new Person("wynnie","wynnie","CS", true);
 			Person terry=new Person("terry","terry","CS", false);
-
+			
+			BP.root.comments.add(new Comment("Nice job",terry));
+			BP.root.children.get(0).comments.add(new Comment("This one should be improved. It should be more detailed",wynnie));
+			
 			ArrayList <Person> storedUser=new ArrayList<Person>();
 			storedUser.add(wynnie);
 			storedUser.add(terry);

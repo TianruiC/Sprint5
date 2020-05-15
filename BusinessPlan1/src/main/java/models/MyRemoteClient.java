@@ -167,6 +167,17 @@ public class MyRemoteClient {
     	}
     	return null;
     }
+    
+    //get the arraylist for different section compared to other BP
+    public ArrayList<ArrayList<String>> diffSectionList(BusinessPlan ComparedOne) {
+    	try {
+			ArrayList<ArrayList<String>> diff = server.compareBP(currentBP, ComparedOne);
+			return diff;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+    	return null;
+    }
 
 
 }

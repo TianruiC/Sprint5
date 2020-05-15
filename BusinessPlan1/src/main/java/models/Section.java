@@ -11,7 +11,7 @@ public class Section implements Serializable
 	public String content = "";
 	public Section parent = null;
 	public ArrayList<Section> children = new ArrayList<Section>();
-
+	public ArrayList<Comment> comments=new ArrayList<Comment>();
 	// default constructor for XML
 	public Section()
 	{
@@ -26,6 +26,14 @@ public class Section implements Serializable
 	@Override
 	public String toString() {
 		return name;
+	}
+	
+	public ArrayList<Comment> getComments() {
+		return comments;
+	}
+
+	public void deleteComment(Comment comment) {
+		this.comments.remove(comment);
 	}
 	
 	public String showContent() {

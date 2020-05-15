@@ -8,34 +8,46 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CommentController">
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-            <Button mnemonicParsing="false" text="Add" />
-          <Button mnemonicParsing="false" text="Delete" />
+            <Button id="AddButton" mnemonicParsing="false" onAction="#onClickAdd" text="Add" />
+          <Button id="DeleteButton" mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
         </items>
       </ToolBar>
    </top>
    <center>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+      <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <top>
-                  <Label text="All Comment" BorderPane.alignment="CENTER" />
+                  <Label fx:id="Name" text="Label" BorderPane.alignment="CENTER" />
                </top>
                <center>
-                  <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <TextArea fx:id="Content" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <top>
-                  <Label text="New Comment" BorderPane.alignment="CENTER" />
-               </top>
-               <center>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+              <items>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label text="All Comment" BorderPane.alignment="CENTER" />
+                     </top>
+                     <center>
+                        <ListView id="AllComment" fx:id="CommentList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label text="New Comment" BorderPane.alignment="CENTER" />
+                     </top>
+                     <center>
+                        <TextArea id="newComment" fx:id="newComment" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+              </items>
+            </SplitPane>
         </items>
       </SplitPane>
    </center>

@@ -20,7 +20,7 @@ public class MyRemoteImpl implements MyRemote {
 	private Person loginPerson=null;
 	private ArrayList <BusinessPlan> storedBP=new ArrayList<BusinessPlan>();
 	private ArrayList <Person> storedUser=new ArrayList<Person>();
-
+	private ArrayList<ArrayList<String>> diffSec = new ArrayList<>();
   
     public MyRemoteImpl() {
     	
@@ -303,5 +303,62 @@ public class MyRemoteImpl implements MyRemote {
             e.printStackTrace();
         }
     }
+    //get all the children of additional section
+    //using recursion
+    public void getDiffChild(Section section, ArrayList<String> List) {
+    	for(Section children: section.getChildren()) {
+    		List.add(children.showContent());
+    		getDiffChild(children,List);
+    	}
+    }
+    public void compareSection(Section section1, Section section2) {
+  
+    	int diffsize = section1.getChildren().size() - section2.getChildren().size();
+    	int compareSize;
+    	//section1 has more child
+    	if(diffsize>0) {
+    		compareSize=section2.getChildren().size();
+    		for(int i=0; i<diffsize;i++) {
+    			diffSec.get(0).add(section1.getChildren().get(i+compareSize).showContent());
+    			getDiffChild(section1.getChildren().get(i+compareSize),diffSec.get(0));
+    		}
+    	}
+    	//section2 has more child
+    	else if(diffsize<0) {
+    		compareSize=section1.getChildren().size();
+    		for(int i=0; i>diffsize;i--) {
+    			diffSec.get(1).add(section1.getChildren().get(compareSize-i).showContent());
+    			getDiffChild(section2.getChildren().get(i+compareSize),diffSec.get(1));
+    		}
+    	}
+    	//the same size
+    	else {
+    		compareSize=section1.getChildren().size();
+    	}
+    	//compare sections
+    	for (int i = 0; i<compareSize; i++) {
+    		if((section1.getChildren().get(i).showContent()).equals(section2.getChildren().get(i).showContent())!=true) {
+    			diffSec.get(0).add(section1.getChildren().get(i).showContent());
+    			diffSec.get(1).add(section2.getChildren().get(i).showContent());
+    		}
+    		compareSection(section1.getChildren().get(i),section2.getChildren().get(i));
+		}
+    	
+    }
+	public ArrayList<ArrayList<String>> compareBP(BusinessPlan BP1, BusinessPlan BP2) throws RemoteException {
+		diffSec.clear();
+		diffSec.add(new ArrayList<String>());//BP1
+		diffSec.add(new ArrayList<String>());//BP2
+		
+		if((BP1.getRoot().showContent()).equals(BP2.getRoot().showContent())!=true) {
+			diffSec.get(0).add(BP1.getRoot().showContent());
+			diffSec.get(1).add(BP2.getRoot().showContent());
+		}
+		
+		//recursion to get all child section
+		compareSection(BP1.getRoot(),BP2.getRoot());
+		
+		return diffSec;
+	}
 
 }

@@ -6,33 +6,32 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CompareDetailedController">
    <center>
       <SplitPane dividerPositions="0.5151515151515151" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <top>
-                  <Label text="BP1" BorderPane.alignment="CENTER">
+                  <Label fx:id="BP1Name" text="BP1" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </top>
                <center>
-                  <TreeView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <TreeView fx:id="BP1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <BorderPane prefHeight="198.0" prefWidth="159.0">
                <top>
-                  <Label text="BP2" BorderPane.alignment="CENTER">
+                  <Label fx:id="BP2Name" text="BP2" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </top>
                <center>
-                  <TreeView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <TreeView fx:id="BP2" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </items>

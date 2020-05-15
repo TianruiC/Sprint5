@@ -39,7 +39,7 @@
    <bottom>
       <HBox prefHeight="87.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="YesButton" maxWidth="160.0" mnemonicParsing="false" onAction="#onClickYes" style="-fx-background-color: #ff9999; -fx-border-color: #737373;" text="YES" textFill="WHITE">
+            <Button id="ConfirmYes" fx:id="YesButton" maxWidth="160.0" mnemonicParsing="false" onAction="#onClickYes" style="-fx-background-color: #ff9999; -fx-border-color: #737373;" text="YES" textFill="WHITE">
                <HBox.margin>
                   <Insets left="150.0" />
                </HBox.margin>
